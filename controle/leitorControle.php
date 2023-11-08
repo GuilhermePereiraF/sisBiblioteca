@@ -13,7 +13,7 @@ if ($acao == NULL) {
     $leitor = new Leitor();
     $leitor->setNome($_POST['nome']);
     $leitor->setNascimento($_POST['nascimento']);
-    $leitor->setCPF($_POST['cpf']);
+    $leitor->setCpf($_POST['cpf']);
     $leitor->setRG($_POST['rg']);
 
     $leitorDao->salvar($leitor);

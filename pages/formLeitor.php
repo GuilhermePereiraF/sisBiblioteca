@@ -1,12 +1,12 @@
 <h1>Cadastro de Leitor</h1>
-    <form>
+    <form action="?page=leitorControle&acao=salvar" method="post">
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">
   </div>
   <div class="mb-3">
-    <label for="idade" class="form-label">Idade</label>
-    <input type="number" class="form-control" id="idade" name="idade">
+    <label for="nascimento" class="form-label">Nascimento</label>
+    <input type="date" class="form-control" id="nascimento" name="nascimento">
   </div>
   <div class="mb-3">
     <label for="sexo" class="form-label">Sexo</label>

@@ -5,8 +5,18 @@ class Leitor{
     private $sexo;
     private $rg;
     private $id;
+    private $cpf;
 
-public function getRg($rg){
+public function getCpf(){
+    return $this->cpf;
+}
+
+public function setCpf($cpf){
+    $this->cpf= $cpf;
+}
+
+
+public function getRg(){
     return $this->rg;
 }
 
@@ -14,7 +24,7 @@ public function setRg($rg){
     $this->rg= $rg;
 }
 
-public function getNome($nome){
+public function getNome(){
     return $this->nome;
 }
 
@@ -22,11 +32,11 @@ public function setNome($nome){
     $this->nome = $nome;
 }
 
-public function getNascimrnto($nascimento){
+public function getNascimento(){
     return $this->nascimento;
 }
 
-public function setNascimento($Nascimento){
+public function setNascimento($nascimento){
     $this-> nascimento = $nascimento;
 }
 
@@ -37,7 +47,7 @@ public function getId(){
 public function setId($id){
     $this->id = $id;
 }
- public function getSexo($sexo){
+ public function getSexo(){
     return $this->sexo;
 }
 

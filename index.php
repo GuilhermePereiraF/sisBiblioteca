@@ -33,7 +33,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="?page=formLivro">Livro</a></li>
-                <li><a class="dropdown-item" href="?page=formLeitor">Leitor</a></li>
+                <li><a class="dropdown-item" href="?page=leitorControle">Leitor</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="?page=formBibliotecario">Bibliotecário</a></li>
               </ul>
@@ -54,7 +54,7 @@
 <?php 
 
 if(!empty($_GET['page'])){
-  include "pages/".$_GET['page'].".php";
+  include "controle/".$_GET['page'].".php";
 }
 ?>
 </div>

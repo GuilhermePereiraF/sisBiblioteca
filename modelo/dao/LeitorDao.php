@@ -10,16 +10,23 @@ class LeitorDao
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "sisBiblioteca";
+        $bd = "mydb";
 
         $nome = $leitor->getNome();
         $nascimento = $leitor->getNascimento();
+        $sexo = $leitor-> getSexo();
+        $cpf = $leitor->getCpf();
+        $rg = $leitor->getRg();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO pessoa(nome,nascimento) VALUES (:nome, :nascimento)');
+        $query = $conexao->prepare('INSERT INTO leitor(nome,nascimento, sexo, rg) VALUES (:nome, :nascimento, :sexo, :rg)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':nascimento', $nascimento);
+        $query->bindParam(':sexo', $sexo);
+        $query->bindParam(':rg', $rg);
+
+
 
         $query->execute();
 
