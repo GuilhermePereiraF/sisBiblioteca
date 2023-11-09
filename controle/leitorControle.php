@@ -13,12 +13,15 @@ if ($acao == NULL) {
     $leitor = new Leitor();
     $leitor->setNome($_POST['nome']);
     $leitor->setNascimento($_POST['nascimento']);
-    $leitor->setCpf($_POST['cpf']);
+
     $leitor->setRG($_POST['rg']);
 
-    $LeitorDao->salvar($leitor);
+    $leitorDao->salvar($leitor);
+
+    header("Location: ?page=leitorControle&acao=listar");
 } else if ($acao == "listar") {
-    echo "listando...";
+    $leitores = $leitorDao->listar();
+    include 'pages/listarLeitor.php';
 } else if ($acao == "alterar") {
     echo "alterando...";
 } else if ($acao == "excluir") {

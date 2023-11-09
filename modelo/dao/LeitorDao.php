@@ -15,7 +15,7 @@ class LeitorDao
         $nome = $leitor->getNome();
         $nascimento = $leitor->getNascimento();
         $sexo = $leitor-> getSexo();
-        $cpf = $leitor->getCpf();
+        
         $rg = $leitor->getRg();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
@@ -41,6 +41,19 @@ class LeitorDao
 
     public function listar()
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg FROM leitor');
+        $query->execute();
+        $leitores = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $leitores;
+
     }
 
     public function deletar($id)

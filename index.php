@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-info">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +34,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="?page=formLivro">Livro</a></li>
-                <li><a class="dropdown-item" href="?page=leitorControle">Leitor</a></li>
+                <li><a class="dropdown-item" href="?page=leitorControle&acao=listar">Leitor</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="?page=formBibliotecario">Bibliotecário</a></li>
               </ul>
@@ -67,7 +68,9 @@ if(!empty($_GET['page'])){
     <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Company, Inc</p>
 
     <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/>
+      <use xlink:href="#bootstrap" />
+    </svg>
     </a>
 
     <ul class="nav col-md-4 justify-content-end">
