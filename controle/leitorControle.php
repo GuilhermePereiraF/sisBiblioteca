@@ -16,7 +16,7 @@ if ($acao == NULL) {
     $leitor->setCpf($_POST['cpf']);
     $leitor->setRG($_POST['rg']);
 
-    $leitorDao->salvar($leitor);
+    $LeitorDao->salvar($leitor);
 } else if ($acao == "listar") {
     echo "listando...";
 } else if ($acao == "alterar") {

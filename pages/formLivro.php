@@ -1,5 +1,5 @@
 <h1>Cadastro de Livro</h1>
-        <form>
+      <form action="?page=livroControle&acao=salvar" method="post">
             <div class="mb-3">
               <label for="titulo" class="form-label">Título</label>
               <input type="text" class="form-control" id="titulo" aria-describedby="emailHelp" name="titulo">

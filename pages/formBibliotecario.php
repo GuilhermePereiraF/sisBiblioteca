@@ -1,5 +1,5 @@
 <h1>Cadastro de Bibliotecário</h1>
-        <form>
+  <form action="?page=bibliotecarioControle&acao=salvar" method="post">
             <div class="mb-3">
               <label for="nome" class="form-label">Nome</label>
               <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">
@@ -20,10 +20,7 @@
               <label for="matricula" class="form-label">Matrícula</label>
               <input type="number" class="form-control" id="matricula" name="matricula">
             </div>
-            <div class="mb-3">
-              <label for="cpf" class="form-label">CPF</label>
-              <input type="number" class="form-control" id="cpf" name="cpf">
-            </div>
+
             <div class="mb-3">
               <label for="rg" class="form-label">RG</label>
               <input type="number" class="form-control" id="rg" name="rg">

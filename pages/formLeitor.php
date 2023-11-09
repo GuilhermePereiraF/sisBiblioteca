@@ -12,10 +12,7 @@
     <label for="sexo" class="form-label">Sexo</label>
     <input type="text" class="form-control" id="sexo" aria-describedby="emailHelp" name="sexo">
   </div>
-  <div class="mb-3">
-    <label for="cpf" class="form-label">CPF</label>
-    <input type="number" class="form-control" id="cpf" aria-describedby="emailHelp" name="cpf">
-  </div>
+  
   <div class="mb-3">
     <label for="rg" class="form-label">RG</label>
     <input type="number" class="form-control" id="rg" aria-describedby="emailHelp" name="rg">
