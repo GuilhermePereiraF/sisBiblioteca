@@ -1,9 +1,9 @@
 <?php
 
-class bibliotecarioDao
+class autorDao
 {
 
-    public function salvar($bibiotecario)
+    public function salvar($autor)
     {
         //  try {
 
@@ -12,20 +12,14 @@ class bibliotecarioDao
         $senha = "aluno";
         $bd = "mydb";
 
-        $nome = $bibliotecario->getNome();
-        $telefone = $bibiotecario->gettelefone();
-        $matricula = $bibiotecario-> getMatricula();
-        $email = $bibiotecario->getEmail();
-        $rg = $bibiotecario->getRg();
+        $nome = $autor->getNome();
+        $telefone = $autor->getObras();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
+        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,obras) VALUES (:nome, :obras)');
         $query->bindParam(':nome', $nome);
-        $query->bindParam(':telefone', $telefone);
-        $query->bindParam(':matricula', $matricula);
-        $query->bindParam(':email', $email);
-        $query->bindParam(':rg', $rg);
+        $query->bindParam(':obras', $obras);
 
 
 
@@ -42,13 +36,49 @@ class bibliotecarioDao
 
     public function listar()
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT nome, obras FROM autor');
+        $query->execute();
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $autor;
     }
 
     public function deletar($id)
     {
+          $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
+        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query->bindParam(':id', $id);
+        $query->execute();
     }
 
-    public function atualizar($bibiotecario)
+    public function atualizar($obras)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "curso";
+
+        $nome = $aluno->getNome();
+        $id = $aluno->getId();
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $query = $conexao->prepare('update pessoa set nome=:nome where id=:id');
+        $query->bindParam(':nome', $nome);
+        $query->bindParam(':id', $id);
+        $query->execute();
+        
     }
 }

@@ -10,15 +10,33 @@ $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 if ($acao == NULL) {
     include 'pages/formAutor.php';
 } else if ($acao == "salvar") {
-    $autor = new Leitor();
+    $autor = new Autor();
+    $autor->setId($_POST['id']);
     $autor->setNome($_POST['nome']);
     $autor->setObras($_POST['obras']);
+    $autorDao->salvar($autor);
 
-    $autorDao->salvar($Autor);
+    header("Location: ?page=autorControle&acao=listar");
 } else if ($acao == "listar") {
-    echo "listando...";
+    $autor = $Dao->listar();
+    include 'pages/listarAutor.php';
 } else if ($acao == "alterar") {
-    echo "alterando...";
+   
+    $autor = new Autor();
+    $autor->setId($_POST['id']);
+    $autor->setNome($_POST['nome']);
+    $autor->setObras($_POST['obras']);
+    $autorDao->atualizar($autor);
+
+    header("Location: ?page=autorControle&acao=listar");
+    
 } else if ($acao == "excluir") {
-    echo "excluindo...";
+    $id = $_GET['id'];
+    $autorDao->deletar($id);
+    header("Location: ?page=autorControle&acao=listar");
+}else if($acao == "get"){
+    $id = $_GET['id'];
+
+    $autor = $autorDao->get($id);
+    include 'pages/formAutor.php';
 }
