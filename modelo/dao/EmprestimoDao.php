@@ -1,6 +1,6 @@
 <?php
 
-class bibliotecarioDao
+class emprestimoDao
 {
 
     public function salvar($bibiotecario)

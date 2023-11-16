@@ -1,9 +1,9 @@
 <?php
 
-class bibliotecarioDao
+class editoraDao
 {
 
-    public function salvar($bibiotecario)
+    public function salvar($editora)
     {
         //  try {
 
@@ -12,20 +12,14 @@ class bibliotecarioDao
         $senha = "aluno";
         $bd = "mydb";
 
-        $nome = $bibliotecario->getNome();
-        $telefone = $bibiotecario->gettelefone();
-        $matricula = $bibiotecario-> getMatricula();
-        $email = $bibiotecario->getEmail();
-        $rg = $bibiotecario->getRg();
+        $nome = $editora->getNome();
+
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
-        $query->bindParam(':nome', $nome);
-        $query->bindParam(':telefone', $telefone);
-        $query->bindParam(':matricula', $matricula);
-        $query->bindParam(':email', $email);
-        $query->bindParam(':rg', $rg);
+        $query = $conexao->prepare('INSERT INTO edtiora(nome,telefone) VALUES (:nome)');
+        $query->bindParam(':nome', $nome);;
+      
 
 
 
@@ -42,13 +36,56 @@ class bibliotecarioDao
 
     public function listar()
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT nome FROM editora');
+        $query->execute();
+        $editoras = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $editoras;
     }
 
     public function deletar($id)
     {
     }
 
-    public function atualizar($bibiotecario)
+    public function atualizar($editora)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $nome = $edtiora->getNome();
+        $id = $editora->getId();
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $query = $conexao->prepare('update editora set nome=:nome where id=:id');
+        $query->bindParam(':nome', $nome);
+        $query->bindParam(':id', $id);
+        $query->execute();
+    }
+
+    public function get($id)
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT id, nome, telefone FROM edtiora WHERE id=:id');
+        $query->bindParam(':id',$id);
+        $query->execute();
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $editoras[0];
+
     }
 }

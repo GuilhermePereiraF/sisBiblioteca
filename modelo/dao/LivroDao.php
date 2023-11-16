@@ -1,6 +1,6 @@
 <?php
 
-class bibliotecarioDao
+class LivroDao
 {
 
     public function salvar($livro)
@@ -12,16 +12,17 @@ class bibliotecarioDao
         $senha = "aluno";
         $bd = "mydb";
 
-        $nome = $bibliotecario->getTitulo();
-        $telefone = $bibiotecario->getAutor();
-        $matricula = $bibiotecario-> getEditoraa();
+        $titulo = $livro->getTitulo();
+        $autor = $bibiotecario->getAutor();
+        $matricula = $bibiotecario-> getEditora();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(titulo, autor, editora) VALUES (:tirulo, :autor, :editora');
+        $query = $conexao->prepare('INSERT INTO bibliotecario(titulo, autor, editora, area) VALUES (:titulo, :autor, :editora, :area');
         $query->bindParam(':titulo', $titulo);
         $query->bindParam(':autor', $autor);
         $query->bindParam(':editora', $editora);
+        $query->bindParam(':area', $area);
 
 
 

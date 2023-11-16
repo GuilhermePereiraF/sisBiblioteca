@@ -18,7 +18,7 @@ public function getTitulo(){
     return $this->titulo;
 }
 
-public function setTitlo($titulo){
+public function setTitulo($titulo){
     $this->titulo = $titulo;
 }
 public function getEditora(){

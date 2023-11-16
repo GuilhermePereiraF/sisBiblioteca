@@ -20,9 +20,6 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Livro</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Reserva</a>
             </li>
             <li class="nav-item">
@@ -33,7 +30,7 @@
                 Cadastro
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="?page=formLivro">Livro</a></li>
+                <li><a class="dropdown-item" href="?page=livroControle&acao=listar">Livro</a></li>
                 <li><a class="dropdown-item" href="?page=leitorControle&acao=listar">Leitor</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="?page=formBibliotecario">Bibliotecário</a></li>

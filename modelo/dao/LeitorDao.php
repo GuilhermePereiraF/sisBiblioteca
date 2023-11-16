@@ -15,7 +15,6 @@ class LeitorDao
         $nome = $leitor->getNome();
         $nascimento = $leitor->getNascimento();
         $sexo = $leitor-> getSexo();
-        
         $rg = $leitor->getRg();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
@@ -47,7 +46,6 @@ class LeitorDao
         $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
         $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg FROM leitor');
         $query->execute();
         $leitores = $query->fetchAll(PDO::FETCH_CLASS);
@@ -62,5 +60,6 @@ class LeitorDao
 
     public function atualizar($leitor)
     {
+        
     }
 }

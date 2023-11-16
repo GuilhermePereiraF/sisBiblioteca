@@ -4,7 +4,6 @@ class Bibliotecario{
     private $telefone;
     private $email;
     private $matricula;
-    
     private $rg;
     private $id;
 
@@ -47,13 +46,7 @@ public function setEmail($email){
 public function setMatricula($matricula){
     $this->matricula = $matricula;
 }
-
-
-
-public function setCpf($cpf){
-    $this->cpf = $cpf;
-}
-public function getId(){
+public function getId($id){
     return $this->id;
 }
 

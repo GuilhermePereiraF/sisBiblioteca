@@ -1,9 +1,9 @@
 <?php
 
-class bibliotecarioDao
+class AreaDao
 {
 
-    public function salvar($bibiotecario)
+    public function salvar($area)
     {
         //  try {
 
@@ -12,20 +12,14 @@ class bibliotecarioDao
         $senha = "aluno";
         $bd = "mydb";
 
-        $nome = $bibliotecario->getNome();
-        $telefone = $bibiotecario->gettelefone();
-        $matricula = $bibiotecario-> getMatricula();
-        $email = $bibiotecario->getEmail();
-        $rg = $bibiotecario->getRg();
+        $nome = $area->getNome();
+
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
+        $query = $conexao->prepare('INSERT INTO area(nome,) VALUES (:nome)');
         $query->bindParam(':nome', $nome);
-        $query->bindParam(':telefone', $telefone);
-        $query->bindParam(':matricula', $matricula);
-        $query->bindParam(':email', $email);
-        $query->bindParam(':rg', $rg);
+
 
 
 
@@ -42,13 +36,56 @@ class bibliotecarioDao
 
     public function listar()
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "mydb";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT id, nome FROM area');
+        $query->execute();
+        $editoras = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $areas;
     }
 
     public function deletar($id)
     {
     }
 
-    public function atualizar($bibiotecario)
+    public function atualizar($area)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $id = $area->getId();
+        $nome = $area->getNome();
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $query = $conexao->prepare('update area set nome=:nome where id=:id');
+        $query->bindParam(':id', $id);
+        $query->bindParam(':nome', $nome);
+        $query->execute();
+    }
+
+    public function get($id)
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT id, nome FROM area WHERE id=:id');
+        $query->bindParam(':id',$id);
+        $query->execute();
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $areas[0];
+
     }
 }
