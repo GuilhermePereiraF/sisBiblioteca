@@ -11,9 +11,10 @@ if ($acao == NULL) {
     include 'pages/formLivro.php';
 } else if ($acao == "salvar") {
     $livro = new Livro();
-    $livro->setNome($_POST['autor']);
-    $livro->setNascimento($_POST['titulo']);
-    $livro->setCpf($_POST['editora']);
+    $livro->setAutor($_POST['autor']);
+    $livro->setTitulo($_POST['titulo']);
+    $livro->setEditora($_POST['editora']);
+    $livro->setArea($_POST['area']);
 
     $livroDao->salvar($livro);
 } else if ($acao == "listar") {
