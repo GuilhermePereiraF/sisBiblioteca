@@ -3,7 +3,7 @@
 require_once 'modelo/dominio/Autor.php';
 require_once 'modelo/dao/AutorDao.php';
 
-$AutorDao = new AutorDao();
+$autorDao = new AutorDao();
 
 $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 
@@ -18,7 +18,7 @@ if ($acao == NULL) {
 
     header("Location: ?page=autorControle&acao=listar");
 } else if ($acao == "listar") {
-    $autor = $Dao->listar();
+    $autor = $autorDao->listar();
     include 'pages/listarAutor.php';
 } else if ($acao == "alterar") {
    
@@ -39,4 +39,11 @@ if ($acao == NULL) {
 
     $autor = $autorDao->get($id);
     include 'pages/formAutor.php';
+}else if($acao == "buscar"){
+    
+    $filtro = $_POST['filtro'];
+    $autor = $autorDao->buscar($filtro);
+
+    include 'pages/listarAutor.php';
+
 }
