@@ -5,9 +5,9 @@
         <a class="btn btn-info" href="?page=leitorControle"> <i class="bi bi-file"></i><br /> NOVO</a>
     </div>
     <div class="col-7">
-        <form class="d-flex" role="search">            
-            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do aluno" aria-label="Search">
-            <button class="btn btn-info" type="submit"><i class="bi bi-search"></i> Buscar</button>
+        <form class="d-flex" role="search" method="post" action="?page=livroControle">            
+            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do livro" aria-label="Search" name="filtro">
+            <button value="buscar" name="acao" class="btn btn-info" type="submit"><i class="bi bi-search"></i> Buscar</button>
         </form>
     </div>
 </div>

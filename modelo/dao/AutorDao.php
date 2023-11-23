@@ -1,6 +1,6 @@
 <?php
 
-class autorDao
+class AutorDao
 {
 
     public function salvar($autor)
@@ -14,10 +14,11 @@ class autorDao
 
         $nome = $autor->getNome();
         $telefone = $autor->getObras();
+        $id = $autor->getId();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,obras) VALUES (:nome, :obras)');
+        $query = $conexao->prepare('INSERT INTO autor(nome,obras) VALUES (:nome, :obras)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':obras', $obras);
 
@@ -52,7 +53,7 @@ class autorDao
 
     public function deletar($id)
     {
-          $host = "localhost";
+        $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
         $bd = "curso";

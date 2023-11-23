@@ -1,6 +1,6 @@
 <?php
 
-class editoraDao
+class EditoraDao
 {
 
     public function salvar($editora)
@@ -13,12 +13,19 @@ class editoraDao
         $bd = "mydb";
 
         $nome = $editora->getNome();
+        $telefone = $editora->getTelefone();
+        $area = $editora->getArea();
+        $tipoPublicacao = $editora->getTipopublicacao();
+        $Id = $editora->getId();
 
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO edtiora(nome,telefone) VALUES (:nome)');
-        $query->bindParam(':nome', $nome);;
+        $query = $conexao->prepare('INSERT INTO editora(nome,telefone,area,tipopubicacao) VALUES (:nome,telefone,area,tipopublicacao)');
+        $query->bindParam(':nome', $nome);
+        $query->bindParam(':telefone', $telefone);
+        $query->bindParam(':area', $area);
+        $query->bindParam(':tipopublicacao', $tipoPublicacao);
       
 
 
@@ -61,7 +68,7 @@ class editoraDao
         $senha = "";
         $bd = "curso";
 
-        $nome = $edtiora->getNome();
+        $nome = $editora->getNome();
         $id = $editora->getId();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
@@ -71,7 +78,79 @@ class editoraDao
         $query->execute();
     }
 
-    public function get($id)
+    public function listar()
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa');
+        $query->execute();
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $alunos;
+
+    }
+
+    public function deletar($id)
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
+        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query->bindParam(':id', $id);
+        $query->execute();
+    }
+
+    public function atualizar($aluno)
+    {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $nome = $aluno->getNome();
+        $nascimento = $aluno->getNascimento();
+        $sexo = $aluno->getSexo();
+        $id = $aluno->getId();
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $query = $conexao->prepare('update pessoa set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
+        $query->bindParam(':nome', $nome);
+        $query->bindParam(':id', $id);
+        $query->bindParam(':sexo', $sexo);
+        $query->bindParam(':nascimento', $nascimento);
+        $query->execute();
+        
+    }
+
+    public function buscar($filtro){
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "";
+        $bd = "curso";
+
+        $filtro = "%".$filtro."%";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+
+        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE nome like :filtro');
+        $query->bindParam(':filtro',$filtro);
+        $query->execute();
+        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+
+        return $alunos;
+    }
+}
+
+    public function get($id);
     {
         $host = "localhost";
         $usuario = "root";
@@ -88,4 +167,3 @@ class editoraDao
         return $editoras[0];
 
     }
-}

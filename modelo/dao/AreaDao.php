@@ -13,6 +13,7 @@ class AreaDao
         $bd = "mydb";
 
         $nome = $area->getNome();
+        $id = $area->getId();
 
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);

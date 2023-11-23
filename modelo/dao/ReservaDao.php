@@ -61,12 +61,21 @@ class reservaDao
     {
         $host = "localhost";
         $usuario = "root";
+<<<<<<< HEAD
+        $senha = "";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
+        $query = $conexao->prepare('delete from reserva where id=:id');
+=======
         $senha = "aluno";
         $bd = "sisBiblioteca";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
         $query = $conexao->prepare('delete from pessoa where id=:id');
+>>>>>>> 328e3feb566746e180395c5b5ad44aab2995150d
         $query->bindParam(':id', $id);
         $query->execute();
     }
