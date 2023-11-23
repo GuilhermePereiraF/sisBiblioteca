@@ -42,12 +42,12 @@ class LivroDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
-        $bd = "curso";
+        $senha = "aluno";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa');
+        $query = $conexao->prepare('SELECT id, titulo, autor_id, editora_id FROM livro');
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -60,7 +60,7 @@ class LivroDao
         $host = "localhost";
         $usuario = "root";
         $senha = "";
-        $bd = "curso";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         

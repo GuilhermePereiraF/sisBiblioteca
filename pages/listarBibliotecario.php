@@ -25,7 +25,7 @@
         <th class="text-center">Excluir</th>
     </tr>
 
-    <?php foreach ($bibliotecarios as $bibliotecario) { ?>
+    <?php foreach ($bibliotecarios as $bibliotecario) ?>
         <tr>
             <td><?php echo $bibliotecario->nome; ?></td>
             <td><?php echo date('d/m/Y', strtotime($bibliotecario->nascimento)); ?></td>
