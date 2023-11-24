@@ -1,5 +1,17 @@
-<h1>Cadastro de Bibliotecário</h1>
-  <form action="?page=bibliotecarioControle&acao=salvar" method="post">
+<h1 class="h3 mb-3 fw-normal">CADASTRO DE BIBLIOTECARIO</h1>
+<form method="post" action="?page=bibliotecarioControle">
+<?php if($bibliotecario!=null){
+       ?>
+       <input type="hidden" name="id" value="<?php echo $bibliotecario->id; ?>"/>
+       <?php
+       $bibliotecario=$bibliotecario->nome;
+       $acao = "alterar"; 
+    }else{
+        $nome='';
+        $acao = "salvar";
+    }
+    ?>  
+      <form action="?page=bibliotecarioControle&acao=salvar" method="post">
             <div class="mb-3">
               <label for="nome" class="form-label">Nome</label>
               <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">

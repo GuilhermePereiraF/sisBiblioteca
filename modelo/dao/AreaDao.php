@@ -53,13 +53,24 @@ class AreaDao
 
     public function deletar($id)
     {
+        $host = "localhost";
+        $usuario = "root";
+        $senha = "aluno";
+        $bd = "curso";
+
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
+        $query = $conexao->prepare('delete from area where id=:id');
+        $query->bindParam(':id', $id);
+        $query->execute();
     }
+
 
     public function atualizar($area)
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $id = $area->getId();
@@ -76,7 +87,7 @@ class AreaDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);

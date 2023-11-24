@@ -19,13 +19,13 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label for="data prazo" class="col-sm-2 col-form-label">Data prazo</label>
+        <label for="dataprazo" class="col-sm-2 col-form-label">Data prazo</label>
         <div class="col-sm-10">
             <input type="date" class="form-control" id="dataprazo" name="dataprazo">
         </div>
     </div>
     <div class="row mb-3">
-        <label for="situacao" class="col-sm-2 col-form-label">Situacão</label>
+        <label for="situacao" class="col-sm-2 col-form-label">Situação</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="situacao" name="situacao" value="<?php echo $situacao; ?>">
         </div>

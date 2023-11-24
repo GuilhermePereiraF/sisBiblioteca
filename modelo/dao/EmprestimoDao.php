@@ -22,7 +22,7 @@ class EmprestimoDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO emprestimo(leitor, retirada, prazodevolucao, multa, livro) VALUES (:leitor, :retirada, :prazodevolucao, :multa, :livro)');
+        $query = $conexao->prepare('INSERT INTO emprestimo(leitor, retirada, prazodevolucao, datadevolucao, multa, livro) VALUES (:leitor, :retirada, :prazodevolucao, :datadevolucao, :multa, :livro)');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
         $query->bindParam(':prazodevolucao', $prazoDevolucao);
@@ -47,16 +47,16 @@ class EmprestimoDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa');
+        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo');
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $emprestimos;
 
     }
 
@@ -64,34 +64,38 @@ class EmprestimoDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
-        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query = $conexao->prepare('delete from emprestimo where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
-    public function atualizar($aluno)
+    public function atualizar($emprestimo)
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
-        $nome = $aluno->getNome();
-        $nascimento = $aluno->getNascimento();
-        $sexo = $aluno->getSexo();
-        $id = $aluno->getId();
+        $leitor = $emprestimo->getLeitor();
+        $retirada = $emprestimo->getRetirada();
+        $prazoDevolucao = $emprestimo->getPrazodevolucao();
+        $dataDevolucao = $emprestimo->getDatadevolucao();
+        $multa = $emprestimo->getMulta();
+        $livro = $emprestimo->getLivro();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update pessoa set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
-        $query->bindParam(':nome', $nome);
-        $query->bindParam(':id', $id);
-        $query->bindParam(':sexo', $sexo);
-        $query->bindParam(':nascimento', $nascimento);
+        $query = $conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
+        $query->bindParam(':leitor', $leitor);
+        $query->bindParam(':retirada', $retirada);
+        $query->bindParam(':prazodevolucao', $prazoDevolucao);
+        $query->bindParam(':datadevolucao', $dataDevolucao);
+        $query->bindParam(':multa', $multa);
+        $query->bindParam(':livro', $livro);
         $query->execute();
         
     }
@@ -100,35 +104,35 @@ class EmprestimoDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE id=:id');
+        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos[0];
+        return $emprestimos[0];
 
     }
 
     public function buscar($filtro){
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $filtro = "%".$filtro."%";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE nome like :filtro');
+        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $emprestimos;
     }
 }

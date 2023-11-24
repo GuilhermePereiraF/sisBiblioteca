@@ -45,16 +45,16 @@ class BibliotecarioDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa');
+        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email, rg FROM bibliotecario');
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $bibliotecariox;
 
     }
 
@@ -62,34 +62,36 @@ class BibliotecarioDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
-        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query = $conexao->prepare('delete from bibliotecario where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
-    public function atualizar($aluno)
+    public function atualizar($bibliotecario)
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
-        $nome = $aluno->getNome();
-        $nascimento = $aluno->getNascimento();
-        $sexo = $aluno->getSexo();
-        $id = $aluno->getId();
+        $nome = $bibliotecario->getNome();
+        $telefone = $bibliotecario->getTelefone();
+        $matricula = $bibliotecario->getMatricula();
+        $email = $bibliotecario->getEmail();
+       
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update pessoa set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
+        $query = $conexao->prepare('update bibliotecario set nome=:nome, telefone=:telefone, matricula=:matricula, email=:email where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
-        $query->bindParam(':sexo', $sexo);
-        $query->bindParam(':nascimento', $nascimento);
+        $query->bindParam(':telefone', $telefone);
+        $query->bindParam(':matricula', $matricula);
+        $query->bindParam(':email', $email);
         $query->execute();
         
     }
@@ -98,35 +100,35 @@ class BibliotecarioDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE id=:id');
+        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos[0];
+        return $bibliotecariox[0];
 
     }
 
     public function buscar($filtro){
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $filtro = "%".$filtro."%";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE nome like :filtro');
+        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $bibliotecariox;
     }
 }

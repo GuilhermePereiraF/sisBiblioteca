@@ -1,4 +1,16 @@
-<h1>Cadastro de Livro</h1>
+<h1 class="h3 mb-3 fw-normal">CADASTRO DE LIVRO</h1>
+<form method="post" action="?page=livroControle">
+<?php if($livro!=null){
+       ?>
+       <input type="hidden" name="id" value="<?php echo $livro->id; ?>"/>
+       <?php
+       $livro=$livro->titulo;
+       $acao = "alterar"; 
+    }else{
+        $titulo='';
+        $acao = "salvar";
+    }
+    ?>  
       <form action="?page=livroControle&acao=salvar" method="post">
             <div class="mb-3">
               <label for="titulo" class="form-label">Título</label>

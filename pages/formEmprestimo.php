@@ -19,12 +19,12 @@
         </div>
     </div>
     <div class="row mb-3">
-        <label for="data prazo" class="col-sm-2 col-form-label">Data de emprestimo/Retirada</label>
+        <label for="dataemprestimo" class="col-sm-2 col-form-label">Data de emprestimo/Retirada</label>
         <div class="col-sm-10">
             <input type="date" class="form-control" id="dataemprestimo" name="dataemprestimo">
         </div>
     <div class="row mb-3">
-        <label for="data prazo" class="col-sm-2 col-form-label">Data prazo de devolução</label>
+        <label for="dataprazo" class="col-sm-2 col-form-label">Data prazo de devolução</label>
         <div class="col-sm-10">
             <input type="date" class="form-control" id="dataprazo" name="dataprazo">
         </div>

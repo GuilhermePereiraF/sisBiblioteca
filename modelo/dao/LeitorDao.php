@@ -1,7 +1,6 @@
 <?php
 
-class LeitorDao
-{
+class LeitorDao {
 
     public function salvar($leitor)
     {
@@ -44,16 +43,16 @@ class LeitorDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa');
+        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM leitor');
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $leitores = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $leitores;
 
     }
 
@@ -61,30 +60,30 @@ class LeitorDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
-        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query = $conexao->prepare('delete from leitor where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
-    public function atualizar($aluno)
+    public function atualizar($leitor)
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
-        $nome = $aluno->getNome();
-        $nascimento = $aluno->getNascimento();
-        $sexo = $aluno->getSexo();
-        $id = $aluno->getId();
+        $nome = $leitor->getNome();
+        $nascimento = $leitor->getNascimento();
+        $sexo = $leitor->getSexo();
+        $id = $leitor->getId();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update pessoa set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
+        $query = $conexao->prepare('update leitor set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->bindParam(':sexo', $sexo);
@@ -97,51 +96,55 @@ class LeitorDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE id=:id');
+        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM leitor WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos[0];
+        return $leitores[0];
 
     }
 
     public function buscar($filtro){
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $filtro = "%".$filtro."%";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE nome like :filtro');
+        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo, rg FROM leitor WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
-    }
-}
-
-    public function listar();
-    {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg FROM leitor');
-        $query->execute();
-        $leitores = $query->fetchAll(PDO::FETCH_CLASS);
-
         return $leitores;
-
     }
+    
+    
+     public function listar()
+
+    {
+
+    $host = "localhost";
+    $usuario = "root";
+    $senha = "aluno";
+    $bd = "mydb";
+
+    $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+    $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg FROM leitor');
+    $query->execute();
+    $leitores = $query->fetchAll(PDO::FETCH_CLASS);
+
+    return $leitores;
+
+
+     }
+}

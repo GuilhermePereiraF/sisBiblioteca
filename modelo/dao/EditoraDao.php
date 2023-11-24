@@ -61,7 +61,7 @@ class EditoraDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
@@ -75,7 +75,7 @@ class EditoraDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $nome = $editora->getNome();
@@ -90,7 +90,7 @@ class EditoraDao
     public function get($id){
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "curso";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);

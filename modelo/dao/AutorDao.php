@@ -46,9 +46,9 @@ class AutorDao
 
         $query = $conexao->prepare('SELECT nome, obras FROM autor');
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $autors = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $autor;
+        return $autors;
     }
 
     public function deletar($id)
@@ -60,12 +60,12 @@ class AutorDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
-        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query = $conexao->prepare('delete from autor where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
-    public function atualizar($obras)
+    public function atualizar($autor)
     {
         $host = "localhost";
         $usuario = "root";
@@ -76,7 +76,7 @@ class AutorDao
         $id = $aluno->getId();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update pessoa set nome=:nome where id=:id');
+        $query = $conexao->prepare('update autor set nome=:nome where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->execute();

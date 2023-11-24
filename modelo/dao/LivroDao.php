@@ -57,36 +57,36 @@ class LivroDao
 
     public function deletar($id)
     {
-        $host = "localhost";
+       $host = "localhost";
         $usuario = "root";
-        $senha = "";
+        $senha = "aluno";
         $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
-        $query = $conexao->prepare('delete from pessoa where id=:id');
+        $query = $conexao->prepare('delete from livro where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
-    public function atualizar($aluno)
+    public function atualizar($livro)
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
-        $bd = "curso";
+        $senha = "aluno";
+        $bd = "mydb";
 
-        $nome = $aluno->getNome();
-        $nascimento = $aluno->getNascimento();
-        $sexo = $aluno->getSexo();
-        $id = $aluno->getId();
+        $titulo = $livro->getTitulo();
+        $autor = $livro->getAutor();
+        $editora = $livro->getEditora();
+        $id = $livro->getId();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        $query = $conexao->prepare('update pessoa set nome=:nome, nascimento=:nascimento, sexo=:sexo where id=:id');
-        $query->bindParam(':nome', $nome);
+        $query = $conexao->prepare('update livro set titulo=:titulo, autor=:autor, editora=:editora where id=:id');
+        $query->bindParam(':titulo', $titulo);
         $query->bindParam(':id', $id);
-        $query->bindParam(':sexo', $sexo);
-        $query->bindParam(':nascimento', $nascimento);
+        $query->bindParam(':autor', $autor);
+        $query->bindParam(':editora', $editora);
         $query->execute();
         
     }
@@ -95,12 +95,12 @@ class LivroDao
     {
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
-        $bd = "curso";
+        $senha = "aluno";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE id=:id');
+        $query = $conexao->prepare('SELECT titulo, autor,editora FROM livro WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);
@@ -110,20 +110,21 @@ class LivroDao
     }
 
     public function buscar($filtro){
+       
         $host = "localhost";
         $usuario = "root";
-        $senha = "";
-        $bd = "curso";
+        $senha = "aluno";
+        $bd = "mydb";
 
         $filtro = "%".$filtro."%";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT id, nome, nascimento, sexo FROM pessoa WHERE nome like :filtro');
+        $query = $conexao->prepare('SELECT titulo, autor, editora FROM livro WHERE titulo  like :filtro or autor like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $reservas = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $reservas;
     }
 }

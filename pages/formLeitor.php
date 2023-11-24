@@ -1,4 +1,16 @@
-<h1>Cadastro de Leitor</h1>
+<h1 class="h3 mb-3 fw-normal">CADASTRO DE LEITOR</h1>
+<form method="post" action="?page=leitorControle">
+<?php if($leitor!=null){
+       ?>
+       <input type="hidden" name="id" value="<?php echo $leitor->id; ?>"/>
+       <?php
+       $leitor=$leitor->nome;
+       $acao = "alterar"; 
+    }else{
+        $nome ='';
+        $acao = "salvar";
+    }
+    ?>  
     <form action="?page=leitorControle&acao=salvar" method="post">
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>

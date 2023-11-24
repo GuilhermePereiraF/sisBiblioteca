@@ -1,4 +1,17 @@
-<h1>Dados do(a) Autor(a)</h1>
+<h1 class="h3 mb-3 fw-normal">CADASTRO DE AUTOR(A)</h1>
+<form method="post" action="?page=autorControle">
+<?php if($autor!=null){
+       ?>
+       <input type="hidden" name="id" value="<?php echo $autor->id; ?>"/>
+       <?php
+       $autor=$autor->nome;
+       $acao = "alterar"; 
+    }else{
+        $nome='';
+        $acao = "salvar";
+    }
+    ?>  
+    
     <form action="?page=leitorControle&acao=salvar" method="post">
   <div class="mb-3">
     <label for="nome" class="form-label">Nome da Autor</label>
