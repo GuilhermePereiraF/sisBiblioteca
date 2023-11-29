@@ -30,10 +30,11 @@
                 Cadastro
               </a>
               <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="?page=livroControle&acao=listar">Bibliotecario</a></li>
                 <li><a class="dropdown-item" href="?page=livroControle&acao=listar">Livro</a></li>
-                <li><a class="dropdown-item" href="?page=leitorControle&acao=listar">Leitor</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="?page=bibliotecarioControle&acao=listar">Bibliotecário</a></li>
+                <li><a class="dropdown-item" href="?page=leitorControle&acao=listar">Leitor</a></li>
+      
               </ul>
             </li>
             <li class="nav-item">

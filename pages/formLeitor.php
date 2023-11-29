@@ -1,6 +1,5 @@
 <h1 class="h3 mb-3 fw-normal">CADASTRO DE LEITOR</h1>
-<form method="post" action="?page=leitorControle">
-<?php if($leitor!=null){
+<?php if(isset($leitor)){
        ?>
        <input type="hidden" name="id" value="<?php echo $leitor->id; ?>"/>
        <?php
@@ -10,8 +9,8 @@
         $nome ='';
         $acao = "salvar";
     }
-    ?>  
-    <form action="?page=leitorControle&acao=salvar" method="post">
+?>  
+    <form action="?page=leitorControle" method="post">
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" name="nome">
@@ -40,5 +39,5 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  <button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn btn-primary">Enviar</button>
 </form>

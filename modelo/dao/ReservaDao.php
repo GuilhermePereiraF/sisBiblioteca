@@ -28,7 +28,6 @@ class reservaDao
         $query->bindParam(':bibliotecario', $bibliotecario);
 
 
-
         $query->execute();
 
         //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

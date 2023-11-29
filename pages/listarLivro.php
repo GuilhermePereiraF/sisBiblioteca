@@ -22,18 +22,18 @@
         <th class="text-center">Excluir</th>
     </tr>
 
-    <?php foreach ($livros as $livro) { ?>
+    <?php foreach ($livro as $livroS) { ?>
         <tr>
             <td><?php echo $livro->titulo; ?></td>
-            <td><?php echo $leitor->editora; ?></td>
-            <td><?php echo $leitor->autor; ?></td>
+            <td><?php echo $livro->editora; ?></td>
+            <td><?php echo $livro->autor; ?></td>
             <td class="text-center">
-                <a href="?page=livroControle&acao=get&id=<?php echo $reserva->id; ?>" class="btn btn-warning">
+                <a href="?page=livroControle&acao=get&id=<?php echo $livro->id; ?>" class="btn btn-warning">
                     <i class="bi bi-pencil"></i>
                 </a>
             </td>
             <td class="text-center">
-                <a href="?page=livroControle&acao=excluir&id=<?php echo $reserva->id; ?>" class="btn btn-danger">
+                <a href="?page=livroControle&acao=excluir&id=<?php echo $livro->id; ?>" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
             </td>

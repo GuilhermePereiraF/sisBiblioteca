@@ -49,9 +49,9 @@ class LivroDao
 
         $query = $conexao->prepare('SELECT id, titulo, autor_id, editora_id FROM livro');
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $livros = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos;
+        return $livros;
 
     }
 
@@ -103,7 +103,7 @@ class LivroDao
         $query = $conexao->prepare('SELECT titulo, autor,editora FROM livro WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $livros = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $alunos[0];
 
@@ -120,10 +120,10 @@ class LivroDao
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT titulo, autor, editora FROM livro WHERE titulo  like :filtro or autor like :filtro');
+        $query = $conexao->prepare('SELECT titulo, autor_id, editora_id FROM livro WHERE titulo  like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
-        $reservas = $query->fetchAll(PDO::FETCH_CLASS);
+        $livros = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $reservas;
     }

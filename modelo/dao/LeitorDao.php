@@ -44,7 +44,7 @@ class LeitorDao {
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "curso";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -61,7 +61,7 @@ class LeitorDao {
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "curso";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -75,7 +75,7 @@ class LeitorDao {
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "curso";
+        $bd = "mydb";
 
         $nome = $leitor->getNome();
         $nascimento = $leitor->getNascimento();
@@ -97,7 +97,7 @@ class LeitorDao {
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "curso";
+        $bd = "mydb";
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -114,7 +114,7 @@ class LeitorDao {
         $host = "localhost";
         $usuario = "root";
         $senha = "aluno";
-        $bd = "curso";
+        $bd = "mydb";
 
         $filtro = "%".$filtro."%";
 
@@ -123,28 +123,8 @@ class LeitorDao {
         $query = $conexao->prepare('SELECT id, nome, nascimento, sexo, rg FROM leitor WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $leitores = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $leitores;
     }
-    
-    
-     public function listar()
-
-    {
-
-    $host = "localhost";
-    $usuario = "root";
-    $senha = "aluno";
-    $bd = "mydb";
-
-    $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-    $query = $conexao->prepare('SELECT nome, nascimento, sexo, rg FROM leitor');
-    $query->execute();
-    $leitores = $query->fetchAll(PDO::FETCH_CLASS);
-
-    return $leitores;
-
-
-     }
 }
