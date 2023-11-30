@@ -1,5 +1,5 @@
 <?php
-
+include 'utilidade/conexao.php';
 class LivroDao
 {
 
@@ -7,10 +7,8 @@ class LivroDao
     {
         //  try {
 
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $titulo = $livro->getTitulo();
         $autor = $livro->getAutor();
@@ -40,10 +38,8 @@ class LivroDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -57,10 +53,8 @@ class LivroDao
 
     public function deletar($id)
     {
-       $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -71,10 +65,8 @@ class LivroDao
 
     public function atualizar($livro)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $titulo = $livro->getTitulo();
         $autor = $livro->getAutor();
@@ -93,10 +85,8 @@ class LivroDao
 
     public function get($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -111,10 +101,8 @@ class LivroDao
 
     public function buscar($filtro){
        
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $filtro = "%".$filtro."%";
 

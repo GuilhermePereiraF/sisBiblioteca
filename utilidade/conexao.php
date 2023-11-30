@@ -3,7 +3,7 @@ class ConexaoBD {
     private $host = 'localhost';
     private $usuario = 'mysql';
     private $senha = 'aluno';
-    private $bancoDados = 'sisBiblioteca';
+    private $bancoDados = 'mydb';
     private $conexao;
     
         public function __construct() {

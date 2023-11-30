@@ -3,7 +3,7 @@
 require_once 'modelo/dominio/Livro.php';
 require_once 'modelo/dao/LivroDao.php';
 
-$livroDao = new LivroDao();
+$LivroDao = new LivroDao();
 
 $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 
@@ -17,11 +17,11 @@ if ($acao == NULL) {
     $livro->setEditora($_POST['editora']);
     $livro->setArea($_POST['area']);
 
-    $livroDao->salvar($livro);
+    $LivroDao->salvar($livro);
 
  header("Location: ?page=livroControle&acao=listar");
 } else if ($acao == "listar") {
-    $livro = $livroDao->listar();
+    $livro = $LivroDao->listar();
     include 'pages/listarLivro.php';
 } else if ($acao == "alterar") {
    
@@ -37,17 +37,17 @@ if ($acao == NULL) {
     
 } else if ($acao == "excluir") {
     $id = $_GET['id'];
-    $livroDao->deletar($id);
+    $LivroDao->deletar($id);
     header("Location: ?page=livroControle&acao=listar");
 }else if($acao == "get"){
     $id = $_GET['id'];
 
-    $livro = $livroDao->get($id);
+    $livro = $LivroDao->get($id);
     include 'pages/formLivro.php';
 }else if($acao == "buscar"){
     
     $filtro = $_POST['filtro'];
-    $livro = $livroDao->buscar($filtro);
+    $livro = $LivroDao->buscar($filtro);
 
     include 'pages/listarLivro.php';
 

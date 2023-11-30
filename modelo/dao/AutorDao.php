@@ -1,5 +1,5 @@
 <?php
-
+include 'utilidade/conexao.php';
 class AutorDao
 {
 
@@ -7,10 +7,8 @@ class AutorDao
     {
         //  try {
 
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $nome = $autor->getNome();
         $telefone = $autor->getObras();
@@ -37,10 +35,8 @@ class AutorDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -53,10 +49,8 @@ class AutorDao
 
     public function deletar($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -67,10 +61,8 @@ class AutorDao
 
     public function atualizar($autor)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $nome = $aluno->getNome();
         $id = $aluno->getId();

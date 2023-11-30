@@ -1,17 +1,13 @@
 <?php
-
+include 'utilidade/conexao.php';
 class AreaDao
 {
 
     public function salvar($area)
     {
-        //  try {
-
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
-
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
+        
         $nome = $area->getNome();
         $id = $area->getId();
 
@@ -37,10 +33,8 @@ class AreaDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -53,10 +47,8 @@ class AreaDao
 
     public function deletar($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -68,11 +60,8 @@ class AreaDao
 
     public function atualizar($area)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
-
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
         $id = $area->getId();
         $nome = $area->getNome();
 
@@ -85,10 +74,8 @@ class AreaDao
 
     public function get($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 

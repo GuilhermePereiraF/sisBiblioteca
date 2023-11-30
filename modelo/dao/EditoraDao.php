@@ -1,5 +1,5 @@
 <?php
-
+include 'utilidade/conexao.php';
 class EditoraDao
 {
 
@@ -7,10 +7,8 @@ class EditoraDao
     {
         //  try {
 
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $nome = $editora->getNome();
         $telefone = $editora->getTelefone();
@@ -43,10 +41,8 @@ class EditoraDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -59,10 +55,8 @@ class EditoraDao
 
     public function deletar($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -73,10 +67,8 @@ class EditoraDao
 
     public function atualizar($editora)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $nome = $editora->getNome();
         $id = $editora->getId();
@@ -88,11 +80,9 @@ class EditoraDao
         $query->execute();
     }
     public function get($id){
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
-
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
+        
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('SELECT id, nome, telefone FROM edtiora WHERE id=:id');

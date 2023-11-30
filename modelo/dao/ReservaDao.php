@@ -1,5 +1,5 @@
 <?php
-
+include 'utilidade/conexao.php';
 class reservaDao
 {
 
@@ -7,10 +7,8 @@ class reservaDao
     {
         //  try {
 
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "mydb";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $leitor = $reserva->geLeitor();
         $dataPrazo = $reserva->getDataPrazo();
@@ -41,10 +39,8 @@ class reservaDao
 
     public function listar()
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "sisBiblioteca";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -59,18 +55,16 @@ class reservaDao
     public function deletar($id)
     {
         
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "curso";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
         $query = $conexao->prepare('delete from reserva where id=:id');
 
-        $senha = "aluno";
-        $bd = "sisBiblioteca";
+        $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         
@@ -82,10 +76,8 @@ class reservaDao
 
     public function atualizar($reserva)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "sisBiblioteca";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $leitor = $reserva->getLeitor();
         $id = $reserva->getId();
@@ -100,10 +92,8 @@ class reservaDao
 
     public function get($id)
     {
-        $host = "localhost";
-        $usuario = "root";
-        $senha = "aluno";
-        $bd = "sisBiblioteca";
+       $conexaoBD = new ConexaoBD;
+        $conexao = configConexao->getConexao ();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
