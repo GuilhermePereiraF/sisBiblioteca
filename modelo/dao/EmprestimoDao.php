@@ -7,8 +7,8 @@ class EmprestimoDao
     {
         //  try {
 
-            $conexaoBD = new ConexaoBD;
-            $conexao = configConexao->getConexao ();
+            $conexaoBD = new ConexaoBD();
+            $conexao = $conexaoBD->getConexaoBD();
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
@@ -43,10 +43,8 @@ class EmprestimoDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo');
         $query->execute();
@@ -58,10 +56,8 @@ class EmprestimoDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
         
         $query = $conexao->prepare('delete from emprestimo where id=:id');
         $query->bindParam(':id', $id);
@@ -70,8 +66,8 @@ class EmprestimoDao
 
     public function atualizar($emprestimo)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
@@ -80,7 +76,7 @@ class EmprestimoDao
         $multa = $emprestimo->getMulta();
         $livro = $emprestimo->getLivro();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        
         $query = $conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
@@ -94,10 +90,8 @@ class EmprestimoDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE id=:id');
         $query->bindParam(':id',$id);
@@ -109,12 +103,10 @@ class EmprestimoDao
     }
 
     public function buscar($filtro){
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $filtro = "%".$filtro."%";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);

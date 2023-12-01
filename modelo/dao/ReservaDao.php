@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBD.php';
 class reservaDao
 {
 
@@ -7,8 +7,8 @@ class reservaDao
     {
         //  try {
 
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+            $conexaoBD = new ConexaoBD();
+            $conexao = $conexaoBD->getConexaoBD();
 
         $leitor = $reserva->geLeitor();
         $dataPrazo = $reserva->getDataPrazo();
@@ -39,8 +39,8 @@ class reservaDao
 
     public function listar()
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+       $conexaoBD = new ConexaoBD();
+       $conexao = $conexaoBD->getConexaoBD();
 
         $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
@@ -55,19 +55,9 @@ class reservaDao
     public function deletar($id)
     {
         
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        
-        $query = $conexao->prepare('delete from reserva where id=:id');
-
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
+                
         $query = $conexao->prepare('delete from reserva where id=:id');
 
         $query->bindParam(':id', $id);
@@ -76,13 +66,12 @@ class reservaDao
 
     public function atualizar($reserva)
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $leitor = $reserva->getLeitor();
         $id = $reserva->getId();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         $query = $conexao->prepare('update reserva set situacao=:situacao where id=:id');
         $query->bindParam(':situacao', $situacao);
         $query->bindParam(':id', $id);
@@ -92,10 +81,8 @@ class reservaDao
 
     public function get($id)
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT id, leitor, situacao FROM reserva WHERE id=:id');
         $query->bindParam(':id',$id);

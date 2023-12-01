@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBD.php';
 class LivroDao
 {
 
@@ -8,7 +8,7 @@ class LivroDao
         //  try {
 
        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+       $conexao = $conexaoBD->getConexao ();
 
         $titulo = $livro->getTitulo();
         $autor = $livro->getAutor();
@@ -38,10 +38,8 @@ class LivroDao
 
     public function listar()
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+       $conexaoBD = new ConexaoBD();
+       $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT id, titulo, autor_id, editora_id FROM livro');
         $query->execute();
@@ -53,11 +51,9 @@ class LivroDao
 
     public function deletar($id)
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-        
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
+       
         $query = $conexao->prepare('delete from livro where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
@@ -65,8 +61,8 @@ class LivroDao
 
     public function atualizar($livro)
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $titulo = $livro->getTitulo();
         $autor = $livro->getAutor();
@@ -85,10 +81,8 @@ class LivroDao
 
     public function get($id)
     {
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT titulo, autor,editora FROM livro WHERE id=:id');
         $query->bindParam(':id',$id);
@@ -101,12 +95,10 @@ class LivroDao
 
     public function buscar($filtro){
        
-       $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $filtro = "%".$filtro."%";
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('SELECT titulo, autor_id, editora_id FROM livro WHERE titulo  like :filtro');
         $query->bindParam(':filtro',$filtro);

@@ -1,14 +1,13 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBd.php';
 class BibliotecarioDao
 {
 
     public function salvar($bibiotecario)
     {
         //  try {
-
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+            $conexaoBD = new ConexaoBD();
+            $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $bibliotecario->getNome();
         $telefone = $bibliotecario->getTelefone();
@@ -16,8 +15,6 @@ class BibliotecarioDao
         $email = $bibliotecario->getEmail();
         $rg = $bibliotecario->getRg();
         $id = $bibliotecario->getId();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
         $query->bindParam(':nome', $nome);
@@ -41,10 +38,8 @@ class BibliotecarioDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email, rg FROM bibliotecario');
         $query->execute();
@@ -56,10 +51,8 @@ class BibliotecarioDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
         
         $query = $conexao->prepare('delete from bibliotecario where id=:id');
         $query->bindParam(':id', $id);
@@ -68,8 +61,8 @@ class BibliotecarioDao
 
     public function atualizar($bibliotecario)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $bibliotecario->getNome();
         $telefone = $bibliotecario->getTelefone();
@@ -77,7 +70,6 @@ class BibliotecarioDao
         $email = $bibliotecario->getEmail();
        
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         $query = $conexao->prepare('update bibliotecario set nome=:nome, telefone=:telefone, matricula=:matricula, email=:email where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
@@ -90,10 +82,8 @@ class BibliotecarioDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE id=:id');
         $query->bindParam(':id',$id);
@@ -105,12 +95,11 @@ class BibliotecarioDao
     }
 
     public function buscar($filtro){
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $filtro = "%".$filtro."%";
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);

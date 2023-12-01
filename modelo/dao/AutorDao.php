@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBD.php';
 class AutorDao
 {
 
@@ -7,8 +7,8 @@ class AutorDao
     {
         //  try {
 
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+            $conexaoBD = new ConexaoBD();
+            $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $autor->getNome();
         $telefone = $autor->getObras();
@@ -35,10 +35,8 @@ class AutorDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT nome, obras FROM autor');
         $query->execute();
@@ -49,10 +47,8 @@ class AutorDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
         
         $query = $conexao->prepare('delete from autor where id=:id');
         $query->bindParam(':id', $id);
@@ -61,13 +57,12 @@ class AutorDao
 
     public function atualizar($autor)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $aluno->getNome();
         $id = $aluno->getId();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         $query = $conexao->prepare('update autor set nome=:nome where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);

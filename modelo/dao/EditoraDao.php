@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBD.php';
 class EditoraDao
 {
 
@@ -7,17 +7,14 @@ class EditoraDao
     {
         //  try {
 
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+            $conexaoBD = new ConexaoBD();
+            $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $editora->getNome();
         $telefone = $editora->getTelefone();
         $area = $editora->getArea();
         $tipoPublicacao = $editora->getTipopublicacao();
         $Id = $editora->getId();
-
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
         $query = $conexao->prepare('INSERT INTO editora(nome,telefone,area,tipopubicacao) VALUES (:nome,telefone,area,tipopublicacao)');
         $query->bindParam(':nome', $nome);
@@ -41,10 +38,8 @@ class EditoraDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT nome FROM editora');
         $query->execute();
@@ -55,10 +50,8 @@ class EditoraDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
         
         $query = $conexao->prepare('delete from editora where id=:id');
         $query->bindParam(':id', $id);
@@ -67,23 +60,20 @@ class EditoraDao
 
     public function atualizar($editora)
     {
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $nome = $editora->getNome();
         $id = $editora->getId();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         $query = $conexao->prepare('update editora set nome=:nome where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->execute();
     }
     public function get($id){
-        $conexaoBD = new ConexaoBD;
-        $conexao = configConexao->getConexao ();
-        
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $conexaoBD = new ConexaoBD();
+        $conexao = $conexaoBD->getConexaoBD();
 
         $query = $conexao->prepare('SELECT id, nome, telefone FROM edtiora WHERE id=:id');
         $query->bindParam(':id',$id);
