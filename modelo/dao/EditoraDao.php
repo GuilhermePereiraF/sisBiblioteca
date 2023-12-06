@@ -7,8 +7,8 @@ class EditoraDao
     {
         //  try {
 
-            $conexaoBD = new ConexaoBD();
-            $conexao = $conexaoBD->getConexaoBD();
+            $ConexaoBD = new ConexaoBD();
+            $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $editora->getNome();
         $telefone = $editora->getTelefone();
@@ -16,7 +16,7 @@ class EditoraDao
         $tipoPublicacao = $editora->getTipopublicacao();
         $Id = $editora->getId();
 
-        $query = $conexao->prepare('INSERT INTO editora(nome,telefone,area,tipopubicacao) VALUES (:nome,telefone,area,tipopublicacao)');
+        $query = $Conexao->prepare('INSERT INTO editora(nome,telefone,area,tipopubicacao) VALUES (:nome,telefone,area,tipopublicacao)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':telefone', $telefone);
         $query->bindParam(':area', $area);
@@ -27,8 +27,8 @@ class EditoraDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -38,10 +38,10 @@ class EditoraDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT nome FROM editora');
+        $query = $Conexao->prepare('SELECT nome FROM editora');
         $query->execute();
         $editoras = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -50,32 +50,32 @@ class EditoraDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
         
-        $query = $conexao->prepare('delete from editora where id=:id');
+        $query = $Conexao->prepare('delete from editora where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
     public function atualizar($editora)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $editora->getNome();
         $id = $editora->getId();
 
-        $query = $conexao->prepare('update editora set nome=:nome where id=:id');
+        $query = $Conexao->prepare('update editora set nome=:nome where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->execute();
     }
     public function get($id){
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT id, nome, telefone FROM edtiora WHERE id=:id');
+        $query = $Conexao->prepare('SELECT id, nome, telefone FROM edtiora WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);

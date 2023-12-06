@@ -20,17 +20,18 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Reserva</a>
+              <a class="nav-link active" aria-current="page" href="?page=reservaControle&acao=listar">Reserva</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Empréstimo</a>
+              <a class="nav-link active" aria-current="page" href="?page=emprestimoControle&acao=listar">Empréstimo</a>
+
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastro
               </a>
               <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="?page=livroControle&acao=listar">Bibliotecario</a></li>
+              <li><a class="dropdown-item" href="?page=bibliotecarioControle&acao=listar">Bibliotecario</a></li>
                 <li><a class="dropdown-item" href="?page=livroControle&acao=listar">Livro</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="?page=leitorControle&acao=listar">Leitor</a></li>

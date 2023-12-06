@@ -1,13 +1,13 @@
 <?php
-include 'utilidade/ConexaoBd.php';
+include 'utilidade/ConexaoBD.php';
 class BibliotecarioDao
 {
 
     public function salvar($bibiotecario)
     {
         //  try {
-            $conexaoBD = new ConexaoBD();
-            $conexao = $conexaoBD->getConexaoBD();
+            $ConexaoBD = new ConexaoBD();
+            $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $bibliotecario->getNome();
         $telefone = $bibliotecario->getTelefone();
@@ -16,7 +16,7 @@ class BibliotecarioDao
         $rg = $bibliotecario->getRg();
         $id = $bibliotecario->getId();
 
-        $query = $conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
+        $query = $Conexao->prepare('INSERT INTO bibliotecario(nome,telefone,matricula, email, rg) VALUES (:nome, :telefone, :matricula, :email, :rg)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':telefone', $telefone);
         $query->bindParam(':matricula', $matricula);
@@ -27,8 +27,8 @@ class BibliotecarioDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -38,10 +38,10 @@ class BibliotecarioDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email, rg FROM bibliotecario');
+        $query = $Conexao->prepare('SELECT id, nome, telefone, matricula, email, rg FROM bibliotecario');
         $query->execute();
         $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -51,18 +51,18 @@ class BibliotecarioDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
         
-        $query = $conexao->prepare('delete from bibliotecario where id=:id');
+        $query = $Conexao->prepare('delete from bibliotecario where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
     public function atualizar($bibliotecario)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $bibliotecario->getNome();
         $telefone = $bibliotecario->getTelefone();
@@ -70,7 +70,7 @@ class BibliotecarioDao
         $email = $bibliotecario->getEmail();
        
 
-        $query = $conexao->prepare('update bibliotecario set nome=:nome, telefone=:telefone, matricula=:matricula, email=:email where id=:id');
+        $query = $Conexao->prepare('update bibliotecario set nome=:nome, telefone=:telefone, matricula=:matricula, email=:email where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->bindParam(':telefone', $telefone);
@@ -82,10 +82,10 @@ class BibliotecarioDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE id=:id');
+        $query = $Conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
@@ -95,13 +95,13 @@ class BibliotecarioDao
     }
 
     public function buscar($filtro){
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $filtro = "%".$filtro."%";
 
 
-        $query = $conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE nome like :filtro');
+        $query = $Conexao->prepare('SELECT id, nome, telefone, matricula, email FROM bibliotecario WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);

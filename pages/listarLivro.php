@@ -2,7 +2,7 @@
 <hr />
 <div class="row" style="padding:15px;">
     <div class="col-5">
-        <a class="btn btn-info" href="?page=leitorControle"> <i class="bi bi-file"></i><br /> NOVO</a>
+        <a class="btn btn-info" href="?page=livroControle"> <i class="bi bi-file"></i><br /> NOVO</a>
     </div>
     <div class="col-7">
         <form class="d-flex" role="search" method="post" action="?page=livroControle">            

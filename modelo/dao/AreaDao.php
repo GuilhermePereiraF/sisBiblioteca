@@ -5,14 +5,14 @@ class AreaDao
 
     public function salvar($area)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
         
         $nome = $area->getNome();
         $id = $area->getId();
 
 
-        $query = $conexao->prepare('INSERT INTO area(nome,) VALUES (:nome)');
+        $query = $Conexao->prepare('INSERT INTO area(nome,) VALUES (:nome)');
         $query->bindParam(':nome', $nome);
 
 
@@ -20,8 +20,8 @@ class AreaDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -31,10 +31,10 @@ class AreaDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT id, nome FROM area');
+        $query = $Conexao->prepare('SELECT id, nome FROM area');
         $query->execute();
         $editoras = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -43,10 +43,10 @@ class AreaDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD(); 
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD(); 
         
-        $query = $conexao->prepare('delete from area where id=:id');
+        $query = $Conexao->prepare('delete from area where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
@@ -54,13 +54,13 @@ class AreaDao
 
     public function atualizar($area)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $id = $area->getId();
         $nome = $area->getNome();
 
-        $query = $conexao->prepare('update area set nome=:nome where id=:id');
+        $query = $Conexao->prepare('update area set nome=:nome where id=:id');
         $query->bindParam(':id', $id);
         $query->bindParam(':nome', $nome);
         $query->execute();
@@ -68,10 +68,10 @@ class AreaDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = ConexaoBD->getConexao ();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = ConexaoBD->getConexao ();
 
-        $query = $conexao->prepare('SELECT id, nome FROM area WHERE id=:id');
+        $query = $Conexao->prepare('SELECT id, nome FROM area WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);

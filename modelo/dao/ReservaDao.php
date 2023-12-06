@@ -7,8 +7,8 @@ class reservaDao
     {
         //  try {
 
-            $conexaoBD = new ConexaoBD();
-            $conexao = $conexaoBD->getConexaoBD();
+            $ConexaoBD = new ConexaoBD();
+            $Conexao = $ConexaoBD->getConexaoBD();
 
         $leitor = $reserva->geLeitor();
         $dataPrazo = $reserva->getDataPrazo();
@@ -16,9 +16,9 @@ class reservaDao
         $livro = $reserva->getLivro();
         $bibliotecario = $reserva->getiBibliotecario();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO reserva(leitor, dataPrazo, situacao, livro, bibliotecario) VALUES (:leitor, :dataPrazo, :situacao, :livro, :bibliotecario)');
+        $query = $Conexao->prepare('INSERT INTO reserva(leitor, dataPrazo, situacao, livro, bibliotecario) VALUES (:leitor, :dataPrazo, :situacao, :livro, :bibliotecario)');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':dataPrazo', $dataPrazo);
         $query->bindParam(':situacao', $situacao);
@@ -28,8 +28,8 @@ class reservaDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -39,12 +39,12 @@ class reservaDao
 
     public function listar()
     {
-       $conexaoBD = new ConexaoBD();
-       $conexao = $conexaoBD->getConexaoBD();
+       $ConexaoBD = new ConexaoBD();
+       $Conexao = $ConexaoBD->getConexaoBD();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('SELECT leitor, dataPrazo, situacao, livro FROM reserva');
+        $query = $Conexao->prepare('SELECT leitor, dataPrazo, situacao, livro FROM reserva');
         $query->execute();
         $reservas = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -55,10 +55,10 @@ class reservaDao
     public function deletar($id)
     {
         
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
                 
-        $query = $conexao->prepare('delete from reserva where id=:id');
+        $query = $Conexao->prepare('delete from reserva where id=:id');
 
         $query->bindParam(':id', $id);
         $query->execute();
@@ -66,13 +66,13 @@ class reservaDao
 
     public function atualizar($reserva)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $leitor = $reserva->getLeitor();
         $id = $reserva->getId();
 
-        $query = $conexao->prepare('update reserva set situacao=:situacao where id=:id');
+        $query = $Conexao->prepare('update reserva set situacao=:situacao where id=:id');
         $query->bindParam(':situacao', $situacao);
         $query->bindParam(':id', $id);
         $query->execute();
@@ -81,10 +81,10 @@ class reservaDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT id, leitor, situacao FROM reserva WHERE id=:id');
+        $query = $Conexao->prepare('SELECT id, leitor, situacao FROM reserva WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);

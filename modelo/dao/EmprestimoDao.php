@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/conexao.php';
+include 'utilidade/ConexaoBD.php';
 class EmprestimoDao
 {
 
@@ -7,8 +7,8 @@ class EmprestimoDao
     {
         //  try {
 
-            $conexaoBD = new ConexaoBD();
-            $conexao = $conexaoBD->getConexaoBD();
+            $ConexaoBD = new ConexaoBD();
+            $Conexao = $ConexaoBD->getConexaoBD();
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
@@ -18,9 +18,9 @@ class EmprestimoDao
         $livro = $emprestimo->getLivro();
         $id = $emprestimo->getId();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO emprestimo(leitor, retirada, prazodevolucao, datadevolucao, multa, livro) VALUES (:leitor, :retirada, :prazodevolucao, :datadevolucao, :multa, :livro)');
+        $query = $Conexao->prepare('INSERT INTO emprestimo(leitor, retirada, prazodevolucao, datadevolucao, multa, livro) VALUES (:leitor, :retirada, :prazodevolucao, :datadevolucao, :multa, :livro)');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
         $query->bindParam(':prazodevolucao', $prazoDevolucao);
@@ -32,8 +32,8 @@ class EmprestimoDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -43,12 +43,12 @@ class EmprestimoDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo');
+        $query = $Conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo');
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $emprestimo = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $emprestimos;
 
@@ -56,18 +56,18 @@ class EmprestimoDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
         
-        $query = $conexao->prepare('delete from emprestimo where id=:id');
+        $query = $Conexao->prepare('delete from emprestimo where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
     public function atualizar($emprestimo)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
@@ -77,7 +77,7 @@ class EmprestimoDao
         $livro = $emprestimo->getLivro();
 
         
-        $query = $conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
+        $query = $Conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
         $query->bindParam(':prazodevolucao', $prazoDevolucao);
@@ -90,10 +90,10 @@ class EmprestimoDao
 
     public function get($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE id=:id');
+        $query = $Conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);
@@ -103,12 +103,12 @@ class EmprestimoDao
     }
 
     public function buscar($filtro){
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $filtro = "%".$filtro."%";
 
-        $query = $conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE nome like :filtro');
+        $query = $Conexao->prepare('SELECT leitor, retirada, prazodevolucao, datadevolucao, multa, livro FROM emprestimo WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);

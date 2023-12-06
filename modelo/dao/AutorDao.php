@@ -7,16 +7,16 @@ class AutorDao
     {
         //  try {
 
-            $conexaoBD = new ConexaoBD();
-            $conexao = $conexaoBD->getConexaoBD();
+            $ConexaoBD = new ConexaoBD();
+            $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $autor->getNome();
         $telefone = $autor->getObras();
         $id = $autor->getId();
 
-        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $conexao->prepare('INSERT INTO autor(nome,obras) VALUES (:nome, :obras)');
+        $query = $Conexao->prepare('INSERT INTO autor(nome,obras) VALUES (:nome, :obras)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':obras', $obras);
 
@@ -24,8 +24,8 @@ class AutorDao
 
         $query->execute();
 
-        //    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //  $conexao->exec('SET NAMES "utf8"');
+        //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //  $Conexao->exec('SET NAMES "utf8"');
 
         // } catch (Exception $e) {
         //    print $e->getMessage();
@@ -35,10 +35,10 @@ class AutorDao
 
     public function listar()
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $conexao->prepare('SELECT nome, obras FROM autor');
+        $query = $Conexao->prepare('SELECT nome, obras FROM autor');
         $query->execute();
         $autors = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -47,23 +47,23 @@ class AutorDao
 
     public function deletar($id)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
         
-        $query = $conexao->prepare('delete from autor where id=:id');
+        $query = $Conexao->prepare('delete from autor where id=:id');
         $query->bindParam(':id', $id);
         $query->execute();
     }
 
     public function atualizar($autor)
     {
-        $conexaoBD = new ConexaoBD();
-        $conexao = $conexaoBD->getConexaoBD();
+        $ConexaoBD = new ConexaoBD();
+        $Conexao = $ConexaoBD->getConexaoBD();
 
         $nome = $aluno->getNome();
         $id = $aluno->getId();
 
-        $query = $conexao->prepare('update autor set nome=:nome where id=:id');
+        $query = $Conexao->prepare('update autor set nome=:nome where id=:id');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':id', $id);
         $query->execute();
