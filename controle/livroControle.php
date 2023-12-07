@@ -31,7 +31,7 @@ if ($acao == NULL) {
     $livro->setTitulo($_POST['titulo']);
     $livro->setEditora($_POST['editora']);
     $livro->setArea($_POST['area']);
-    $livroDao->atualizar($aluno);
+    $livroDao->atualizar($livro);
 
     header("Location: ?page=livroControle&acao=listar");
     
@@ -48,6 +48,9 @@ if ($acao == NULL) {
     
     $filtro = $_POST['filtro'];
     $livro = $LivroDao->buscar($filtro);
+
+    $livro = $LivroDao->buscar($filtro);
+
 
     include 'pages/listarLivro.php';
 

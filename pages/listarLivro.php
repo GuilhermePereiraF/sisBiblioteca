@@ -22,7 +22,7 @@
         <th class="text-center">Excluir</th>
     </tr>
 
-    <?php foreach ($livro as $livroS) { ?>
+    <?php foreach ($livro as $livros) { ?>
         <tr>
             <td><?php echo $livro->titulo; ?></td>
             <td><?php echo $livro->editora; ?></td>

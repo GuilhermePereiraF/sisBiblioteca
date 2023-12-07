@@ -31,7 +31,7 @@ if ($acao == NULL) {
 
 
 
-    $ReservaDao->salvar($Reserva);
+    $ReservaDao->salvar($reserva);
 
     header("Location: ?page=reservaControle&acao=listar");
 } else if ($acao == "listar") {

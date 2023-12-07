@@ -15,9 +15,7 @@ class LivroDao
         $editora = $livro->getEditora();
         $id = $livro->getId();
 
-        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $Conexao->prepare('INSERT INTO livro(titulo, autor, editora, area) VALUES (:titulo, :autor, :editora, :area');
+        $query = $Conexao->prepare('INSERT INTO livro(titulo, autor_id, editora_id, area_id) VALUES (:titulo, :autor, :editora, :area');
         $query->bindParam(':titulo', $titulo);
         $query->bindParam(':autor', $autor);
         $query->bindParam(':editora', $editora);
@@ -69,7 +67,6 @@ class LivroDao
         $editora = $livro->getEditora();
         $id = $livro->getId();
 
-        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
         $query = $Conexao->prepare('update livro set titulo=:titulo, autor=:autor, editora=:editora where id=:id');
         $query->bindParam(':titulo', $titulo);
         $query->bindParam(':id', $id);
@@ -89,7 +86,7 @@ class LivroDao
         $query->execute();
         $livros = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $alunos[0];
+        return $livros[0];
 
     }
 
@@ -105,6 +102,6 @@ class LivroDao
         $query->execute();
         $livros = $query->fetchAll(PDO::FETCH_CLASS);
 
-        return $reservas;
+        return $livros;
     }
 }

@@ -29,7 +29,6 @@ class EmprestimoDao
         $query->bindParam(':Livro_id', $Livro_id);
 
 
-
         $query->execute();
 
         //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
