@@ -55,7 +55,7 @@ if ($acao == NULL) {
     $id = $_GET['id'];
 
 
-    $aluno = $alunoDao->get($id);
+    
 
     $leitor = $leitorDao->get($id);
 

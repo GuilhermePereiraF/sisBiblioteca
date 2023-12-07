@@ -10,20 +10,16 @@ class reservaDao
             $ConexaoBD = new ConexaoBD();
             $Conexao = $ConexaoBD->getConexaoBD();
 
-        $leitor = $reserva->geLeitor();
+        $leitor_id = $reserva->getleitor_id();
         $dataPrazo = $reserva->getDataPrazo();
-        $situacao = $reserva-> getSituacao();
+        $situacaoleitor = $reserva-> getSituacaoleitor();
         $livro = $reserva->getLivro();
-        $bibliotecario = $reserva->getiBibliotecario();
-
-        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $Conexao->prepare('INSERT INTO reserva(leitor, dataPrazo, situacao, livro, bibliotecario) VALUES (:leitor, :dataPrazo, :situacao, :livro, :bibliotecario)');
-        $query->bindParam(':leitor', $leitor);
+        $query = $Conexao->prepare('INSERT INTO reserva(leitor_id, dataPrazo, situacaoleitor, livro) VALUES (:leitor_id, :dataPrazo, :situacaoleitor, :livro)');
+        $query->bindParam(':leitor_id', $leitor_id);
         $query->bindParam(':dataPrazo', $dataPrazo);
-        $query->bindParam(':situacao', $situacao);
+        $query->bindParam(':situacaoleitor', $situacaoleitor);
         $query->bindParam(':livro', $livro);
-        $query->bindParam(':bibliotecario', $bibliotecario);
+
 
 
         $query->execute();
@@ -42,9 +38,7 @@ class reservaDao
        $ConexaoBD = new ConexaoBD();
        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
-
-        $query = $Conexao->prepare('SELECT leitor, dataPrazo, situacao, livro FROM reserva');
+        $query = $Conexao->prepare('SELECT leitor_id, dataPrazo, situacaoleitor, Livro_id FROM reserva');
         $query->execute();
         $reservas = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -69,11 +63,11 @@ class reservaDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $leitor = $reserva->getLeitor();
+        $leitor_id = $reserva->getLeitor_id();
         $id = $reserva->getId();
 
-        $query = $Conexao->prepare('update reserva set situacao=:situacao where id=:id');
-        $query->bindParam(':situacao', $situacao);
+        $query = $Conexao->prepare('update reserva set situacaoleitor=:situacaoleitor where id=:id');
+        $query->bindParam(':situacaoleitor', $situacaoleitor);
         $query->bindParam(':id', $id);
         $query->execute();
         
@@ -84,7 +78,7 @@ class reservaDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT id, leitor, situacao FROM reserva WHERE id=:id');
+        $query = $Conexao->prepare('SELECT id, leitor_id, situacaoleitor FROM reserva WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $alunos = $query->fetchAll(PDO::FETCH_CLASS);

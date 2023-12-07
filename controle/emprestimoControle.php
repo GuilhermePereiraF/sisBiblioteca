@@ -15,7 +15,7 @@ if ($acao == NULL) {
     $emprestimo->setLeitor($_POST['leitor']);
     $emprestimo->setRetirada($_POST['retirada']);
     $emprestimo->setPrazodevolucao($_POST['prazodevolucao']);
-    $emprestimo->setDataRevolucao($_POST['datadevolucao']);
+    $emprestimo->setDataDevolucao($_POST['datadevolucao']);
     $emprestimo->setMulta($_POST['multa']);
     $emprestimo->setLivro($_POST['livro']);
 

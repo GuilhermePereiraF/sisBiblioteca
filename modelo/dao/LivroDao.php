@@ -84,7 +84,7 @@ class LivroDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT titulo, autor,editora FROM livro WHERE id=:id');
+        $query = $Conexao->prepare('SELECT titulo, autor_id, editora_id FROM livro WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $livros = $query->fetchAll(PDO::FETCH_CLASS);

@@ -23,16 +23,14 @@ public function getLeitor(){
 public function setLeitor($leitor){
     $this->leitor = $leitor;
 }
-public function getRetirada($retirada){
-    return $this->retirada;
-}
+
 
 public function setRetirada($retirada){
     $this-> retirada = $retirada;
 }
  
-public function getPrazoDevolucao($prazoDevolucao){
-     return $this-> prazo;
+public function getPrazo_devolucao($prazo_devolucao){
+     return $this-> getPrazo_Devolucao;
 }
    
 public function setPrazoDevolucao($prazoDevolucao){

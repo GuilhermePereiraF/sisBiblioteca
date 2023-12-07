@@ -1,13 +1,13 @@
 
-<h3 style="margin:15px;">ALUNOS</h3>
+<h3 style="margin:15px;">EMPRESTIMO</h3>
 <hr />
 <div class="row" style="padding:15px;">
     <div class="col-5">
-        <a class="btn btn-info" href="?page=alunoControle"> <i class="bi bi-file"></i><br /> NOVO</a>
+        <a class="btn btn-info" href="?page=emprestimoControle"> <i class="bi bi-file"></i><br /> NOVO</a>
     </div>
     <div class="col-7">
-        <form class="d-flex" role="search" method="post" action="?page=alunoControle">            
-            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do aluno" aria-label="Search" name="filtro">
+        <form class="d-flex" role="search" method="post" action="?page=emprestimoControle">            
+            <input class="form-control me-2" type="search" placeholder="Pesquise pelo nome do emprestimo" aria-label="Search" name="filtro">
             <button value="buscar" name="acao" class="btn btn-info" type="submit"><i class="bi bi-search"></i> Buscar</button>
         </form>
     </div>
@@ -23,7 +23,7 @@
         <th class="text-center">Excluir</th>
     </tr>
 
-    <?php foreach ($alunos as $aluno) { ?>
+    <?php foreach ($emprestimos as $emprestimo) { ?>
         <tr>
             <td><?php echo $emprestimo->leitor; ?></td>
             <td><?php echo date('d/m/Y', strtotime($emprestimo->prazodevolucao )); ?></td>

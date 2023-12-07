@@ -10,20 +10,21 @@ $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 if ($acao == NULL) {
     include 'pages/formReserva.php';
 } else if ($acao == "salvar") {
-    $reserva = new Leitor();
+    $reserva = new Reserva();
+
     $reserva->setLeitor($_POST['leitor']);
-    $reserva->setDataPrazoo($_POST['dataprazo']);
+    $reserva->setDataPrazo($_POST['dataprazo']);
     $reserva->setSituacao($_POST['situacao']);
     $reserva->setLivro($_POST['livro']);
-    $reserva->setBibliotecario($_POST['bibliotecario']);
+
 
     
     $ReservaDao->salvar($reserva);
 
 }  else if ($acao == "salvar") {
     $reserva = new Reserva();
-    $reserva->setLeitor($_POST['leitor']);
-    $reserva->setDataPrazoo($_POST['dataPrazo']);
+    $reserva->set_Leitor($_POST['leitor']);
+    $reserva->setDataPrazo($_POST['dataPrazo']);
     $reserva->setSituacao($_POST['situacao']);
     $reserva->setLivro($_POST['livro']);
     $reserva->setBibliotecario($_POST['bibliotecario']);

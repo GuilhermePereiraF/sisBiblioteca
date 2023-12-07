@@ -36,11 +36,5 @@
             <input type="text" class="form-control" id="livro" name="livro" value="<?php echo $livro; ?>">
         </div>
     </div>
-    <div class="row mb-3">
-        <label for="bibliotecario" class="col-sm-2 col-form-label">Bibliotecario</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="bibliotecario" name="bibliotecario" value="<?php echo $bibliotecario; ?>">
-        </div>
-    </div>
     <button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn btn-primary">Salvar</button>
 </form>

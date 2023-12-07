@@ -16,7 +16,7 @@ class LeitorDao {
         $id = $leitor->getId();
         $cpf = $leitor->getCpf();
 
-        $query = $ConexaoBD->prepare('INSERT INTO leitor(nome,nascimento, sexo, rg) VALUES (:nome, :nascimento, :sexo, :rg)');
+        $query = $Conexao->prepare('INSERT INTO leitor(nome,nascimento, sexo, rg) VALUES (:nome, :nascimento, :sexo, :rg)');
         $query->bindParam(':nome', $nome);
         $query->bindParam(':nascimento', $nascimento);
         $query->bindParam(':sexo', $sexo);
@@ -39,7 +39,7 @@ class LeitorDao {
     {
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
-        $query = $ConexaoBD->prepare('SELECT id, nome, nascimento, sexo, rg FROM leitor');
+        $query = $Conexao->prepare('SELECT id, nome, nascimento, sexo, rg FROM leitor');
         $query->execute();
         $leitores = $query->fetchAll(PDO::FETCH_CLASS);
 
