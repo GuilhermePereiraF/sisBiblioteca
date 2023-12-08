@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/ConexaoBD.php';
+require_once 'utilidade/ConexaoBD.php';
 class EmprestimoDao
 {
 
@@ -13,7 +13,7 @@ class EmprestimoDao
         $leitor = $emprestimo->getLeitor();
      
         $prazo_Devolucao = $emprestimo-> getPrazo_devolucao();
-        $dataDevolucao = $emprestimo->getDatadevolucao();
+        $data_Devolucao = $emprestimo->getData_devolucao();
         $multa = $emprestimo->getMulta();
         $livro = $emprestimo->getLivro();
         $id = $emprestimo->getId();
@@ -70,8 +70,8 @@ class EmprestimoDao
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
-        $prazoDevolucao = $emprestimo->getPrazodevolucao();
-        $dataDevolucao = $emprestimo->getDatadevolucao();
+        $prazo_Devolucao = $emprestimo->getPrazo_devolucao();
+        $data_Devolucao = $emprestimo->getData_devolucao();
         $multa = $emprestimo->getMulta();
         $livro = $emprestimo->getLivro();
 
@@ -79,8 +79,8 @@ class EmprestimoDao
         $query = $Conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
-        $query->bindParam(':prazodevolucao', $prazoDevolucao);
-        $query->bindParam(':datadevolucao', $dataDevolucao);
+        $query->bindParam(':prazo_devolucao', $prazo_Devolucao);
+        $query->bindParam(':data_devolucao', $data_Devolucao);
         $query->bindParam(':multa', $multa);
         $query->bindParam(':livro', $livro);
         $query->execute();

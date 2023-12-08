@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/ConexaoBD.php';
+require_once 'utilidade/ConexaoBD.php';
 class AutorDao
 {
 

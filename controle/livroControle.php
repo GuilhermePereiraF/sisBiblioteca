@@ -3,11 +3,18 @@
 require_once 'modelo/dominio/Livro.php';
 require_once 'modelo/dao/LivroDao.php';
 
+require_once 'modelo/dominio/Leitor.php';
+require_once 'modelo/dao/LeitorDao.php';
+
 $LivroDao = new LivroDao();
+$leitorDao = new LeitorDao();
 
 $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 
 if ($acao == NULL) {
+
+    $livros = $livroDao->listar();
+
     include 'pages/formLivro.php';
 } else if ($acao == "salvar") {
     $livro = new Livro();

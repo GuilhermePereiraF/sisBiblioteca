@@ -1,6 +1,6 @@
 <h1 class="h3 mb-3 fw-normal">CADASTRO DE RESERVA</h1>
 <form method="post" action="?page=reservaControle">
-<?php if($reserva!=null){
+<?php if(isset($reserva)){
        ?>
        <input type="hidden" name="id" value="<?php echo $reserva->id; ?>"/>
        <?php
@@ -8,6 +8,7 @@
        $acao = "alterar"; 
     }else{
         $leitor='';
+        $situacao = '';
         $acao = "salvar";
     }
     ?>     
@@ -15,7 +16,15 @@
 <div class="row mb-3">
         <label for="leitor" class="col-sm-2 col-form-label">Leitor</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="leitor" name="leitor" value="<?php echo $leitor; ?>">
+            <select class="form-control" id="leitor" name="leitor">
+                <option value="">selecione</option>
+                <?php foreach($leitores as $leitor){ ?> 
+                    <option value="<?php echo $leitor->id; ?>"><?php echo $leitor->nome; ?></option>
+                <?php } ?>
+                
+            </select>
+
+            
         </div>
     </div>
     <div class="row mb-3">
@@ -31,9 +40,15 @@
         </div>
     </div>
     <div class="row mb-3">
+
         <label for="livro" class="col-sm-2 col-form-label">Livro</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="livro" name="livro" value="<?php echo $livro; ?>">
+        <select class="form-control" id="leitor" name="leitor">
+                <option value="">selecione</option>
+                <?php foreach($livros as $livro){ ?> 
+                    <option value="<?php echo $livro->id; ?>"><?php echo $livro->nome; ?></option>
+                <?php } ?>
+                </select>
         </div>
     </div>
     <button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn btn-primary">Salvar</button>

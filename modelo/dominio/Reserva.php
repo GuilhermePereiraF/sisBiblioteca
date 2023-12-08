@@ -3,13 +3,13 @@ class Reserva{
 
     private $leitor;
 
-    private $dataPrazo;
+    private $dataprazo;
 
-    private $situacao;
+    private $situacaoleitor;
 
     private $usuario;
 
-    private $livro;
+    private $Livro_id;
 
     private $id;
 
@@ -29,27 +29,27 @@ class Reserva{
 
     }
 
-    public function setDataprazo($dataPrazo){
+    public function setDataprazo($dataprazo){
 
-        $this->dataPrazo = $dataPrazo;
+        $this->dataprazo = $dataprazo;
 
     }
 
     public function getDataprazo(){
 
-        return $this->$dataPrazo;
+        return $this->$dataprazo;
 
     }
 
-    public function setSituacao($situacao){
+    public function setSituacaoleitor($situacaoleitor){
 
-        $this->situacao = $situacao;
+        $this->situacaoleitor = $situacaoleitor;
 
     }
 
-    public function getSituacao(){
+    public function getSituacaoleitor(){
 
-        return $this->$situacao;
+        return $this->$situacaoleitor;
 
     }
 
@@ -65,15 +65,15 @@ class Reserva{
 
     }
 
-    public function setLivro($livro){
+    public function setLivro_id($Livro_id){
 
-        $this->livro = $livro;
+        $this->Livro_id = $Livro_id;
 
     }
 
-    public function getLivro(){
+    public function getLivro_id(){
 
-        return $this-> $livro;
+        return $this-> $Livro_id;
 
     }
 

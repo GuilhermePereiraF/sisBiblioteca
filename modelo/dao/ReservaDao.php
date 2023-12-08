@@ -1,5 +1,5 @@
 <?php
-include 'utilidade/ConexaoBD.php';
+require_once 'utilidade/ConexaoBD.php';
 class reservaDao
 {
 
@@ -10,15 +10,15 @@ class reservaDao
             $ConexaoBD = new ConexaoBD();
             $Conexao = $ConexaoBD->getConexaoBD();
 
-        $leitor_id = $reserva->getleitor_id();
+        $leitor = $reserva->getLeitor();
         $dataPrazo = $reserva->getDataPrazo();
         $situacaoleitor = $reserva-> getSituacaoleitor();
-        $livro = $reserva->getLivro();
-        $query = $Conexao->prepare('INSERT INTO reserva(leitor_id, dataPrazo, situacaoleitor, livro) VALUES (:leitor_id, :dataPrazo, :situacaoleitor, :livro)');
+        $Livro_id = $reserva->getLivro_id();
+        $query = $Conexao->prepare('INSERT INTO reserva(leitor_id, dataPrazo, situacaoleitor, Livro_id) VALUES (:leitor_id, :dataPrazo, :situacaoleitor, :livro_id)');
         $query->bindParam(':leitor_id', $leitor_id);
         $query->bindParam(':dataPrazo', $dataPrazo);
         $query->bindParam(':situacaoleitor', $situacaoleitor);
-        $query->bindParam(':livro', $livro);
+        $query->bindParam(':Livro_id', $Livro_id);
 
 
 

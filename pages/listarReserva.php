@@ -26,7 +26,7 @@
     <?php foreach ($reservas as $reserva) { ?>
         <tr>
             <td><?php echo $reserva->leitor; ?></td>
-            <td><?php echo date('d/m/Y', strtotime($reserva->dataPrazo)); ?></td>
+            <td><?php echo date('d/m/Y', strtotime($reserva->dataprazo)); ?></td>
             <td><?php echo $reserva->livro; ?></td>
             <td><?php echo $reserva->$bibliotecario; ?></td>
             <td class="text-center">

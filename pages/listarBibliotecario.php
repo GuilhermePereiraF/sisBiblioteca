@@ -26,7 +26,7 @@
     </tr>
 
     <?php 
-    
+
     if(count($bibliotecario)>0){
     foreach ($bibliotecarios as $bibliotecario) { ?>
         <tr>
@@ -43,8 +43,8 @@
     <?php
     
     }
-
 }
+
     
     ?>  
 </table>

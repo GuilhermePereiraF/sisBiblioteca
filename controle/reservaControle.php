@@ -3,35 +3,41 @@
 require_once 'modelo/dominio/Reserva.php';
 require_once 'modelo/dao/ReservaDao.php';
 
+require_once 'modelo/dominio/Leitor.php';
+require_once 'modelo/dao/LeitorDao.php';
+
+
+$leitorDao = new LeitorDao();
 $ReservaDao = new ReservaDao();
 
 $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 
 if ($acao == NULL) {
+
+    $leitores = $leitorDao->listar();
+
     include 'pages/formReserva.php';
 } else if ($acao == "salvar") {
     $reserva = new Reserva();
 
     $reserva->setLeitor($_POST['leitor']);
-    $reserva->setDataPrazo($_POST['dataprazo']);
-    $reserva->setSituacao($_POST['situacao']);
-    $reserva->setLivro($_POST['livro']);
+    $reserva->setDataprazo($_POST['dataprazo']);
+    $reserva->setSituacaoleitor($_POST['situacaoleitor']);
+    $reserva->setLivro_id($_POST['Livro_id']);
 
-
-    
     $ReservaDao->salvar($reserva);
 
 }  else if ($acao == "salvar") {
     $reserva = new Reserva();
-    $reserva->set_Leitor($_POST['leitor']);
-    $reserva->setDataPrazo($_POST['dataPrazo']);
-    $reserva->setSituacao($_POST['situacao']);
-    $reserva->setLivro($_POST['livro']);
+    $reserva->setLeitor($_POST['leitor']);
+    $reserva->setDataprazo($_POST['dataprazo']);
+    $reserva->setSituacaoleitor($_POST['situacaoleitor']);
+    $reserva->setLivro_id($_POST['Livro_id']);
     $reserva->setBibliotecario($_POST['bibliotecario']);
 
 
 
-    $ReservaDao->salvar($reserva);
+    $ReservaDao->listar($reserva);
 
     header("Location: ?page=reservaControle&acao=listar");
 } else if ($acao == "listar") {
