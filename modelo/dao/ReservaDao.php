@@ -14,15 +14,15 @@ class reservaDao
         $dataPrazo = $reserva->getDataPrazo();
         $situacaoleitor = $reserva-> getSituacaoleitor();
         $Livro_id = $reserva->getLivro_id();
-        $query = $Conexao->prepare('INSERT INTO reserva(leitor_id, dataPrazo, situacaoleitor, Livro_id) VALUES (:leitor_id, :dataPrazo, :situacaoleitor, :livro_id)');
+
+        $query = $Conexao->prepare('INSERT INTO reserva(leitor_id, dataPrazo, situacaoleitor, livro_id) VALUES (:leitor_id, :dataPrazo, :situacaoleitor, :livro_id)');
         $query->bindParam(':leitor_id', $leitor_id);
         $query->bindParam(':dataPrazo', $dataPrazo);
         $query->bindParam(':situacaoleitor', $situacaoleitor);
         $query->bindParam(':Livro_id', $Livro_id);
 
-
-
         $query->execute();
+
 
         //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //  $Conexao->exec('SET NAMES "utf8"');
@@ -38,7 +38,7 @@ class reservaDao
        $ConexaoBD = new ConexaoBD();
        $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT leitor_id, dataPrazo, situacaoleitor, Livro_id FROM reserva');
+        $query = $Conexao->prepare('SELECT leitor_id, dataPrazo, situacaoleitor, livro_id FROM reserva');
         $query->execute();
         $reservas = $query->fetchAll(PDO::FETCH_CLASS);
 

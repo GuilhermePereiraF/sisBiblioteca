@@ -22,7 +22,7 @@ if ($acao == NULL) {
 
     header("Location: ?page=bibliotecarioControle&acao=listar");
 } else if ($acao == "listar") {
-    $bibliotecarios = $bibliotecarioDao->listar();
+    $bibliotecario = $bibliotecarioDao->listar();
     include 'pages/listarBibliotecario.php';
 } else if ($acao == "alterar") {
    

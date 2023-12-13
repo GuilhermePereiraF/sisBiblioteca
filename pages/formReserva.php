@@ -43,12 +43,7 @@
 
         <label for="livro" class="col-sm-2 col-form-label">Livro</label>
         <div class="col-sm-10">
-        <select class="form-control" id="leitor" name="leitor">
-                <option value="">selecione</option>
-                <?php foreach($livros as $livro){ ?> 
-                    <option value="<?php echo $livro->id; ?>"><?php echo $livro->nome; ?></option>
-                <?php } ?>
-                </select>
+            <input type="text" class="form-control" id="situacao" name="situacao" value="<?php echo $situacao; ?>">
         </div>
     </div>
     <button value="<?php echo $acao; ?>" name="acao" type="submit" class="btn btn-primary">Salvar</button>

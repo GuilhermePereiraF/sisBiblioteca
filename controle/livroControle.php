@@ -13,7 +13,7 @@ $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : NULL;
 
 if ($acao == NULL) {
 
-    $livros = $livroDao->listar();
+    $livros = $LivroDao->listar();
 
     include 'pages/formLivro.php';
 } else if ($acao == "salvar") {

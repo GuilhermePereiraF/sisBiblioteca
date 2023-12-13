@@ -2,7 +2,7 @@
 class Emprestimo{
     private $leitor;
     private $retirada;
-    private $prazo_Devolucao;
+    private $Prazo_Devolucao;
     private $data_Devolucao;
     private $multa;
     private $livro;
@@ -28,12 +28,13 @@ public function setRetirada($retirada){
     $this-> retirada = $retirada;
 }
  
-public function getPrazo_Devolucao($prazo_Devolucao){
+
+public function getPrazo_Devolucao($Prazo_Devolucao){
      return $this-> getPrazo_Devolucao;
 }
    
-public function setPrazoDevolucao($prazo_Devolucao){
-     $this-> prazo = $prazo_Devolucao;
+public function setPrazo_Devolucao($Prazo_Devolucao){
+     $this-> prazo = $Prazo_Devolucao;
 }
 public function getDataDevolucao(){
     return $this->data;
