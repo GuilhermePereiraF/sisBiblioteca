@@ -12,7 +12,7 @@ class EmprestimoDao
 
         $leitor = $emprestimo->getLeitor();
      
-        $prazo_Devolucao = $emprestimo-> getPrazo_devolucao();
+        $Prazo_Devolucao = $emprestimo-> getPrazo_Devolucao();
         $data_Devolucao = $emprestimo->getData_devolucao();
         $multa = $emprestimo->getMulta();
         $livro = $emprestimo->getLivro();
@@ -20,14 +20,13 @@ class EmprestimoDao
 
         $Conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
 
-        $query = $Conexao->prepare('INSERT INTO emprestimo(leitor, retirada, prazo_devolucao, data_devolucao, multa, Livro_id) VALUES (:leitor, :retirada, :prazodevolucao, :datadevolucao, :multa, :Livro_id)');
+        $query = $Conexao->prepare('INSERT INTO emprestimo(leitor, retirada, Prazo_Devolucao, data_devolucao, multa, Livro_id) VALUES (:leitor, :retirada, :Prazo_Devolucao, :datadevolucao, :multa, :Livro_id)');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
-        $query->bindParam(':prazo_devolucao', $prazo_Devolucao);
+        $query->bindParam(':Prazo_Devolucao', $Prazo_Devolucao);
         $query->bindParam(':data_devolucao', $data_Devolucao);
         $query->bindParam(':multa', $multa);
         $query->bindParam(':Livro_id', $Livro_id);
-
 
         $query->execute();
 
@@ -45,7 +44,7 @@ class EmprestimoDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT leitor_id, retirada, prazo_devolucao, data_devolucao, multa, Livro_id FROM emprestimo');
+        $query = $Conexao->prepare('SELECT leitor_id, retirada, Prazo_Devolucao, data_devolucao, multa, Livro_id FROM emprestimo');
         $query->execute();
         $emprestimo = $query->fetchAll(PDO::FETCH_CLASS);
 
@@ -70,16 +69,16 @@ class EmprestimoDao
 
         $leitor = $emprestimo->getLeitor();
         $retirada = $emprestimo->getRetirada();
-        $prazo_Devolucao = $emprestimo->getPrazo_devolucao();
+        $prazo_Devolucao = $emprestimo->getPrazo_Devolucao();
         $data_Devolucao = $emprestimo->getData_devolucao();
         $multa = $emprestimo->getMulta();
         $livro = $emprestimo->getLivro();
 
         
-        $query = $Conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, prazodevolucao=:prazodevolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
+        $query = $Conexao->prepare('update emprestimo set leitor=:leitor, retirada=:retirada, Prazo_Devolucao=:Prazo_Devolucao, datadevolucao=:datadevolucao, multa=:multa, livro=:livro where id=:id');
         $query->bindParam(':leitor', $leitor);
         $query->bindParam(':retirada', $retirada);
-        $query->bindParam(':prazo_devolucao', $prazo_Devolucao);
+        $query->bindParam(':Prazo_Devolucao', $Prazo_Devolucao);
         $query->bindParam(':data_devolucao', $data_Devolucao);
         $query->bindParam(':multa', $multa);
         $query->bindParam(':livro', $livro);
@@ -92,7 +91,7 @@ class EmprestimoDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT leitor_id, retirada, prazo_devolucao, data_devolucao, multa, livro_id  FROM emprestimo WHERE id=:id');
+        $query = $Conexao->prepare('SELECT leitor_id, retirada, Prazo_Devolucao, data_devolucao, multa, livro_id  FROM emprestimo WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
         $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);
@@ -107,7 +106,7 @@ class EmprestimoDao
 
         $filtro = "%".$filtro."%";
 
-        $query = $Conexao->prepare('SELECT leitor_id, retirada, prazo_devolucao, data_devolucao, multa, livro_id FROM emprestimo WHERE nome like :filtro');
+        $query = $Conexao->prepare('SELECT leitor_id, retirada, Prazo_Devolucao, data_devolucao, multa, livro_id FROM emprestimo WHERE nome like :filtro');
         $query->bindParam(':filtro',$filtro);
         $query->execute();
         $emprestimos = $query->fetchAll(PDO::FETCH_CLASS);

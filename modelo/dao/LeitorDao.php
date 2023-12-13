@@ -25,6 +25,7 @@ class LeitorDao {
 
 
         $query->execute();
+        
 
         //    $Conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //  $Conexao->exec('SET NAMES "utf8"');
