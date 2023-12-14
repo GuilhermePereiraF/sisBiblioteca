@@ -85,7 +85,7 @@ class LeitorDao {
         $query = $Conexao->prepare('SELECT id, nome, nascimento, sexo FROM leitor WHERE id=:id');
         $query->bindParam(':id',$id);
         $query->execute();
-        $alunos = $query->fetchAll(PDO::FETCH_CLASS);
+        $leitores = $query->fetchAll(PDO::FETCH_CLASS);
 
         return $leitores[0];
 

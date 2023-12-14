@@ -27,21 +27,13 @@ if ($acao == NULL) {
     $leitores = $leitorDao->listar();
     include 'pages/listarLeitor.php';
 } else if ($acao == "alterar") {
-    echo "alterando...";
-
-} else if ($acao == "excluir") {
-    $id = $_GET['id'];
-    $leitorDao->deletar($id);
-
-    $leitor = $leitorDao->listar();
-    include 'pages/listarLeitor.php';
-} else if ($acao == "alterar") {
    
     $leitor = new Leitor();
     $leitor->setId($_POST['id']);
     $leitor->setNome($_POST['nome']);
     $leitor->setNascimento($_POST['nascimento']);
     $leitor->setRG($_POST['rg']);
+    $leitor->setSexo($_POST['sexo']);
     $leitorDao->atualizar($leitor);
 
     header("Location: ?page=leitorControle&acao=listar");

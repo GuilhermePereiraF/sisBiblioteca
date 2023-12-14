@@ -38,7 +38,7 @@ if ($acao == NULL) {
     $emprestimo->setLivro($_POST['livro']);
     $emprestimoDao->atualizar($emprestimo);
 
-    header("Location: ?page=emprestimoControle&acao=listar");
+   // header("Location: ?page=emprestimoControle&acao=listar");
     
 } else if ($acao == "excluir") {
     $id = $_GET['id'];

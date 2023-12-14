@@ -41,7 +41,7 @@ class BibliotecarioDao
         $ConexaoBD = new ConexaoBD();
         $Conexao = $ConexaoBD->getConexaoBD();
 
-        $query = $Conexao->prepare('SELECT id, nome, telefone, matricula, rg, email FROM bibliotecario');
+        $query = $Conexao->prepare('SELECT id, nome, email, rg, telefone, matricula FROM bibliotecario');
         $query->execute();
         $bibliotecariox = $query->fetchAll(PDO::FETCH_CLASS);
 
