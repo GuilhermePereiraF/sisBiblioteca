@@ -5,7 +5,7 @@ class Reserva{
 
     private $dataprazo;
 
-    private $situacaoleitor;
+    private $situacao;
 
     private $usuario;
 
@@ -41,15 +41,15 @@ class Reserva{
 
     }
 
-    public function setSituacaoleitor($situacaoleitor){
+    public function setSituacao($situacao){
 
-        $this->situacaoleitor = $situacaoleitor;
+        $this->situacao = $situacao;
 
     }
 
-    public function getSituacaoleitor(){
+    public function getSituacao(){
 
-        return $this->$situacaoleitor;
+        return $this->$situacao;
 
     }
 

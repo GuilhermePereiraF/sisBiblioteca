@@ -32,10 +32,6 @@
               <label for="nascimento" class="form-label">Nascimento</label>
               <input type="date" class="form-control" id="nascimento" name="nascimento">
             </div>
-            <div class="mb-3">
-              <label for="matricula" class="form-label">Matricula</label>
-              <input type="number" class="form-control" id="matricula" name="matricula">
-            </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>

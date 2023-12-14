@@ -22,7 +22,7 @@ if ($acao == NULL) {
 
     $reserva->setLeitor($_POST['leitor']);
     $reserva->setDataprazo($_POST['dataprazo']);
-    $reserva->setSituacaoleitor($_POST['situacaoleitor']);
+    $reserva->setsituacao($_POST['situacao']);
     $reserva->setLivro_id($_POST['Livro_id']);
 
     $ReservaDao->salvar($reserva);
@@ -31,7 +31,7 @@ if ($acao == NULL) {
     $reserva = new Reserva();
     $reserva->setLeitor($_POST['leitor']);
     $reserva->setDataprazo($_POST['dataprazo']);
-    $reserva->setSituacaoleitor($_POST['situacaoleitor']);
+    $reserva->setsituacao($_POST['situacao']);
     $reserva->setLivro_id($_POST['Livro_id']);
     $reserva->setBibliotecario($_POST['bibliotecario']);
 
@@ -47,7 +47,7 @@ if ($acao == NULL) {
    
     $reserva = new Reserva();
     $reserva->setId($_POST['id']);
-    $reserva->setReserva($_POST['reserva']);
+    $reserva->setreserva($_POST['reserva']);
     $ReservaDao->atualizar($reserva);
 
     header("Location: ?page=reservaControle&acao=listar");

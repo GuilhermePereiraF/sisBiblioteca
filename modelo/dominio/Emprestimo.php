@@ -29,19 +29,19 @@ public function setRetirada($retirada){
 }
  
 
-public function getPrazo_Devolucao($Prazo_Devolucao){
-     return $this-> getPrazo_Devolucao;
+public function getprazo_devolucao($prazo_devolucao){
+     return $this-> prazo = $prazo_devolucao;
 }
    
-public function setPrazo_Devolucao($Prazo_Devolucao){
-     $this-> prazo = $Prazo_Devolucao;
+public function setprazo_devolucao($prazo_devolucao){
+     $this-> prazo = $prazo_devolucao;
 }
-public function getDataDevolucao(){
-    return $this->data;
+public function getdata_devolucao($data_devolucao){
+    return $this->data = $data_devolucao;
 }
 
-public function setDataDevolucao($data_Devolucao){
-    $this->data = $data_Devolucao;
+public function setdata_devolucao($data_devolucao){
+    $this->data = $data_devolucao;
 }
 
 

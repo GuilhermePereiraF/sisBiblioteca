@@ -27,7 +27,7 @@
 
     <?php 
 
-    if(count($bibliotecario)>0){
+    if(count($bibliotecarios)>0){
     foreach ($bibliotecarios as $bibliotecario) { ?>
         <tr>
             <td><?php echo $bibliotecario->nome; ?></td>

@@ -26,8 +26,8 @@
     <?php foreach ($emprestimos as $emprestimo) { ?>
         <tr>
             <td><?php echo $emprestimo->leitor; ?></td>
-            <td><?php echo date('d/m/Y', strtotime($emprestimo->prazodevolucao )); ?></td>
-            <td><?php echo date('d/m/Y', strtotime($emprestimo->datadevolucao)); ?></td>
+            <td><?php echo date('d/m/Y', strtotime($emprestimo->prazo_devolucao )); ?></td>
+            <td><?php echo date('d/m/Y', strtotime($emprestimo->data_devolucao)); ?></td>
             <td><?php echo $emprestimo->multa; ?></td>
             <td><?php echo $emprestimo->livro; ?></td>
 

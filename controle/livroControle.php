@@ -18,15 +18,14 @@ if ($acao == NULL) {
     include 'pages/formLivro.php';
 } else if ($acao == "salvar") {
     $livro = new Livro();
-    $livro->setId($_POST['id']);
     $livro->setAutor($_POST['autor']);
     $livro->setTitulo($_POST['titulo']);
     $livro->setEditora($_POST['editora']);
-    $livro->setArea($_POST['area']);
+  //  $livro->setArea($_POST['area']);
 
     $LivroDao->salvar($livro);
 
- header("Location: ?page=livroControle&acao=listar");
+ //      header("Location: ?page=livroControle&acao=listar");
 } else if ($acao == "listar") {
     $livro = $LivroDao->listar();
     include 'pages/listarLivro.php';

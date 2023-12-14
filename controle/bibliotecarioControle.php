@@ -25,7 +25,7 @@ if ($acao == NULL) {
 
 } else if ($acao == "listar") {
 
-    $bibliotecarioes = $bibliotecarioDao->listar();
+    $bibliotecarios = $bibliotecarioDao->listar();
     include 'pages/listarbibliotecario.php';
 } else if ($acao == "alterar") {
    

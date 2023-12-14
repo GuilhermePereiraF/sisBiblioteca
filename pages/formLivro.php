@@ -1,6 +1,6 @@
 <h1 class="h3 mb-3 fw-normal">CADASTRO DE LIVRO</h1>
-<form method="post" action="?page=livroControle">
-<?php if($livro!=null){
+<form action="?page=livroControle" method="post">
+<?php if(isset($livro)){
        ?>
        <input type="hidden" name="id" value="<?php echo $livro->id; ?>"/>
        <?php
@@ -11,7 +11,7 @@
         $acao = "salvar";
     }
     ?>  
-      <form action="?page=livroControle&acao=salvar" method="post">
+     
             <div class="mb-3">
               <label for="titulo" class="form-label">Título</label>
               <input type="text" class="form-control" id="titulo" aria-describedby="emailHelp" name="titulo">
@@ -28,5 +28,5 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" name="acao" value="<?php echo $acao; ?>">Enviar</button>
           </form>

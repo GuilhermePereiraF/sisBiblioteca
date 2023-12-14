@@ -7,8 +7,8 @@ class LivroDao
     {
         //  try {
 
-       $ConexaoBD = new ConexaoBD;
-       $Conexao = $ConexaoBD->getConexao ();
+       $ConexaoBD = new ConexaoBD();
+       $Conexao = $ConexaoBD->getConexaoBD();
 
         $titulo = $livro->getTitulo();
         $autor = $livro->getAutor();

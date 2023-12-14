@@ -14,8 +14,8 @@ if ($acao == NULL) {
     $emprestimo->setId($_POST['id']);
     $emprestimo->setLeitor($_POST['leitor']);
     $emprestimo->setRetirada($_POST['retirada']);
-    $emprestimo->setPrazo_Devolucao($_POST['Prazo_Devolucao']);
-    $emprestimo->setDataDevolucao($_POST['datadevolucao']);
+    $emprestimo->setPrazo_devolucao($_POST['prazo_devolucao']);
+    $emprestimo->setdata_devolucao($_POST['data_devolucao']);
     $emprestimo->setMulta($_POST['multa']);
     $emprestimo->setLivro($_POST['livro']);
 
@@ -32,8 +32,8 @@ if ($acao == NULL) {
     $emprestimo->setId($_POST['id']);
     $emprestimo->setLeitor($_POST['leitor']);
     $emprestimo->setRetirada($_POST['retirada']);
-    $emprestimo->setPrazo_Devolucao($_POST['Prazo_Devolucao']);
-    $emprestimo->setDataRevolucao($_POST['datadevolucao']);
+    $emprestimo->setPrazo_devolucao($_POST['prazo_devolucao']);
+    $emprestimo->setdata_devolucao($_POST['data_devolucao']);
     $emprestimo->setMulta($_POST['multa']);
     $emprestimo->setLivro($_POST['livro']);
     $emprestimoDao->atualizar($emprestimo);
